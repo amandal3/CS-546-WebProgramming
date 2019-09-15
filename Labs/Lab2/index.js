@@ -331,10 +331,10 @@ console.log('-----------------------------------------\n');
 //----------------------------------------------------------------------------
 //----------------------------------------------------------------------------*/
 // countChars Test
-console.log('-----------------------------------------');
+/*console.log('-----------------------------------------');
 console.log('Here we return an object that has the mapping of the character and the numer of times it appears in a string:\n');
-try {
-    /* Returns: {
+try {*/
+/* Returns: {
       " ": 6,
       ",": 1,
       "H": 1,
@@ -350,11 +350,31 @@ try {
       "v": 1
       }
    */
-    console.log('Returns: ', stringUtils.countChars('Hello, the pie is in the oven'));
+/*   console.log('Returns: ', stringUtils.countChars('Hello, the pie is in the oven'));
 } catch (e) {
     console.log(e);
 }
-console.log('-----------------------------------------\n');
+try {
+    console.log('Returns: ', stringUtils.countChars([1234]));
+} catch (e) {
+    console.log(e);
+}
+try {
+    console.log('Returns: ', stringUtils.countChars());
+} catch (e) {
+    console.log(e);
+}
+try {
+    console.log('Returns: ', stringUtils.countChars([1, 2, 3, 4, 5]));
+} catch (e) {
+    console.log(e);
+}
+try {
+    console.log('Returns: ', stringUtils.countChars([123]));
+} catch (e) {
+    console.log(e);
+}
+console.log('-----------------------------------------\n');*/
 //----------------------------------------------------------------------------
 //----------------------------------------------------------------------------
 // mapValues Test

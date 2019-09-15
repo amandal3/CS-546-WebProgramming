@@ -97,6 +97,7 @@ range = function range(end, value) {
 countElements = function countElements(array) {
     if (array !== undefined && Array.isArray(array)) {
         if (array.length >= 0) {
+            //let newArray = []; keeps returning null
             let newArray = new Object();
             for (i = 0; i < array.length; i++) {
                 let count = array[i];

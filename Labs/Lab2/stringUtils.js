@@ -35,7 +35,10 @@ repeat = function repeat(string, num) {
 const arrayUtils = require("./arrayUtils");
 countChars = function countChars(string) {
     checkInput(string);
-    //NOT SURE
+    //NOT SURE - hint from Software Eng. friend said convert string to array - resolved
+    //https://www.geeksforgeeks.org/javascript-string-prototype-split-function/
+    var array = string.split(""); //originally had  " " but that splits the string into words instead of character
+    return arrayUtils.countElements(array);
 }
 
 module.exports = {
