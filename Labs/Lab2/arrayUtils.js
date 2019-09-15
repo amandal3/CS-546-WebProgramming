@@ -53,21 +53,90 @@ remove = function remove(array, index) {
 
 //4. range(end,value)
 range = function range(end, value) {
-
+    if (typeof end === 'number' && end > 0) {
+        if (value == null) { //when not specified
+            let numarray2 = [];
+            let i = 0;
+            while (i < end) {
+                numarray2.push(i);
+                i++;
+            }
+            return numarray2;
+            /*
+            let numarray = [];
+            for (i = 0; i < end; i++) {
+                numarray[i] = value;
+            }
+            return numarray;
+            */
+        } else {
+            /*
+            let numarray2 = [0];
+            let i = 1;
+            while (i < end) {
+                numarray2.push(i);
+                i++;
+            }
+            return numarray2;
+            */
+            //when specified, each element will be set to that value
+            let numarray = [];
+            for (i = 0; i < end; i++) {
+                numarray[i] = value;
+            }
+            return numarray;
+        }
+    } else {
+        throw "End argument is not valid"
+    }
+    //Question: Why does it not work when i do value !== null first?
 }
 
-
-
 //5. countElements(array)
+//NEED HELP
 countElements = function countElements(array) {
-
+    if (array !== undefined && Array.isArray(array)) {
+        for (i = 0; i < array.length; i++) {
+            let newArray = [0];
+            let count = array[i];
+            if (newArray[count] > 0) {
+                newArray[count] += 1;
+            } else {
+                newArray[count] = 1;
+            }
+        }
+        return newArray[count];
+    } else if (array.length == 0) {
+        console.log("Empty array");
+    } else {
+        throw "Invalid array.";
+    }
 }
 
 
 //6. isEqual(arrayOne, arrayTwo)
+//need help with empty arrays and order
 isEqual = function isEqual(arrayOne, arrayTwo) {
-
+    if (Array.isArray(arrayOne) && Array.isArray(arrayTwo)) {
+        if (arrayOne !== undefined && arrayTwo !== undefined) {
+            if (arrayOne.length !== arrayTwo.length) {
+                return false;
+            } else {
+                for (i = 0; i < arrayOne.length; i++) {
+                    if (arrayOne[i] == arrayTwo[i]) {
+                        return true;
+                    } else {
+                        return false;
+                    }
+                }
+                return true;
+            }
+        }
+    } else {
+        throw 'Invalid Array'
+    }
 }
+
 
 module.exports = {
     head,
