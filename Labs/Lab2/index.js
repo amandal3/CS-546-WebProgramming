@@ -3,7 +3,8 @@ of your modules and create a passing and failing test case for each.
 */
 const arrayUtils = require("./arrayUtils");
 const stringUtils = require("./stringUtils");
-
+const objUtils = require("./objUtils");
+/*
 //----------------------------------------------------------------------------
 // Head Tests
 console.log('-----------------------------------------');
@@ -166,27 +167,38 @@ console.log('-----------------------------------------\n');
 //----------------------------------------------------------------------------
 //----------------------------------------------------------------------------
 // Count Elements Tests
-/*
 console.log('-----------------------------------------');
 console.log('Here we will be doing countElements tests: \n');
 
 try {
     // Should Pass
-    console.log('countElements passed successfully\tReturns: ' + arrayUtils.countElements([13, '13', 13, 'hello', true, true]));
+    console.log('countElements passed successfully\tReturns: ' + JSON.stringify(arrayUtils.countElements([13, '13', 13, 'hello', true, true])));
 } catch (e) {
-    console.error('countElements failed test case');
-}
-try {
-    //Should Fail
-    console.error('countElements did not error\tReturns: ' + arrayUtils.countElements("banana"));
-} catch (e) {
-    console.log('countElements failed test case');
+    console.log(e);
 }
 try {
     // Should Pass
-    console.log('countElements passed successfully\tReturns: ' + arrayUtils.countElements());
+    console.log('countElements passed successfully\tReturns: ' + JSON.stringify(arrayUtils.countElements([13, 13, 3, 3, 3, 13, 3])));
 } catch (e) {
-    console.error('countElements failed test case');
+    console.log(e);
+}
+try {
+    //Should Fail
+    console.log('countElements did not error\tReturns: ' + JSON.stringify(arrayUtils.countElements("banana")));
+} catch (e) {
+    console.log(e);
+}
+try {
+    // Should Pass
+    console.log('countElements passed successfully\tReturns: ' + JSON.stringify(arrayUtils.countElements([])));
+} catch (e) {
+    console.log(e);
+}
+try {
+    // Should Pass
+    console.log('countElements passed successfully\tReturns: ' + JSON.stringify(arrayUtils.countElements()));
+} catch (e) {
+    console.log(e);
 }
 console.log('-----------------------------------------\n');
 //----------------------------------------------------------------------------
@@ -235,7 +247,7 @@ try {
     // False
     console.log('isEqual results\tReturns:', arrayUtils.isEqual(['cookie'], [1]));
 } catch (e) {
-    console.log(e;
+    console.log(e);
 }
 try {
     // False
@@ -258,7 +270,7 @@ try {
 console.log('-----------------------------------------\n');
 //----------------------------------------------------------------------------*/
 //----------------------------------------------------------------------------
-// Capitalize Test
+/*// Capitalize Test
 console.log('-----------------------------------------');
 console.log('Here we will capitalize the first letter and lowercase the remaining letters: \n');
 try {
@@ -317,3 +329,51 @@ try {
 }
 console.log('-----------------------------------------\n');
 //----------------------------------------------------------------------------
+//----------------------------------------------------------------------------*/
+// countChars Test
+console.log('-----------------------------------------');
+console.log('Here we return an object that has the mapping of the character and the numer of times it appears in a string:\n');
+try {
+    /* Returns: {
+      " ": 6,
+      ",": 1,
+      "H": 1,
+      "e": 5,
+      "h": 2,
+      "i": 3,
+      "l": 2,
+      "n": 2,
+      "o": 2,
+      "p": 1,
+      "s": 1,
+      "t": 2,
+      "v": 1
+      }
+   */
+    console.log('Returns: ', stringUtils.countChars('Hello, the pie is in the oven'));
+} catch (e) {
+    console.log(e);
+}
+console.log('-----------------------------------------\n');
+//----------------------------------------------------------------------------
+//----------------------------------------------------------------------------
+// mapValues Test
+/*console.log('-----------------------------------------');
+console.log('Here we will do some mapping:\n');
+try {
+    console.log('Returns: ', objUtils.mapValues({ a: 1, b: 2, c: 3 }, n => n + 1));
+} catch (e) {
+    console.log(e);
+}
+try { //Fail
+    console.log('Returns: ', objUtils.mapValues({ a: 1, b: 2, c: 3 }));
+} catch (e) {
+    console.log(e);
+}
+try { //Fail
+    console.log('Returns: ', objUtils.mapValues(n => n + 1));
+} catch (e) {
+    console.log(e);
+}
+console.log('-----------------------------------------\n');
+//----------------------------------------------------------------------------*/

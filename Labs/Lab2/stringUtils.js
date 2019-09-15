@@ -31,8 +31,11 @@ repeat = function repeat(string, num) {
 }
 
 //3. countChars(string)
+// Borrow from countElements
+const arrayUtils = require("./arrayUtils");
 countChars = function countChars(string) {
-
+    checkInput(string);
+    //NOT SURE
 }
 
 module.exports = {

@@ -96,26 +96,26 @@ range = function range(end, value) {
 //NEED HELP
 countElements = function countElements(array) {
     if (array !== undefined && Array.isArray(array)) {
-        for (i = 0; i < array.length; i++) {
-            let newArray = [0];
-            let count = array[i];
-            if (newArray[count] > 0) {
-                newArray[count] += 1;
-            } else {
-                newArray[count] = 1;
+        if (array.length >= 0) {
+            let newArray = new Object();
+            for (i = 0; i < array.length; i++) {
+                let count = array[i];
+                if (newArray[count] > 0) {
+                    newArray[count]++;
+                } else {
+                    newArray[count] = 1;
+                }
             }
+            return newArray;
         }
-        return newArray[count];
-    } else if (array.length == 0) {
-        console.log("Empty array");
     } else {
-        throw "Invalid array.";
+        throw 'Invalid array.';
     }
 }
 
 
 //6. isEqual(arrayOne, arrayTwo)
-//need help with order items in array
+//need help with order items in array - resolved
 isEqual = function isEqual(arrayOne, arrayTwo) {
     if (Array.isArray(arrayOne) && Array.isArray(arrayTwo)) {
         if (arrayOne !== undefined && arrayTwo !== undefined) {
@@ -123,8 +123,8 @@ isEqual = function isEqual(arrayOne, arrayTwo) {
                 return false;
             } else {
                 for (i = 0; i < arrayOne.length; i++) {
-                    if (arrayOne[i] == arrayTwo[i]) {
-                        return true;
+                    if (arrayOne[i] === arrayTwo[i]) {
+                        //return true;  <-- debugged by a friend; I was returning true too soon without letting it check everything
                     } else {
                         return false;
                     }
