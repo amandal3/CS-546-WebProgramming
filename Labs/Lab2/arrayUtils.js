@@ -16,7 +16,7 @@ head = function head(array) {
     } else if (array == undefined) {
         throw "Undefined array.";
     } else {
-        throw "Array is empty.";
+        throw "Invalid Array.";
     }
 }
 
@@ -27,7 +27,7 @@ last = function last(inputarray) {
     } else if (inputarray == undefined) {
         throw "Undefined array.";
     } else {
-        throw "Array is empty.";
+        throw "Invalid Array.";
     }
 }
 
@@ -42,12 +42,12 @@ remove = function remove(array, index) {
             }
             return array;
         } else {
-            throw "Index not in array";
+            throw "Index not in Array.";
         }
     } else if (array === undefined) {
-        throw "Undefined array.";
+        throw "Undefined Array.";
     } else {
-        throw "Array is empty.";
+        throw "Invalid Array.";
     }
 }
 
@@ -87,9 +87,9 @@ range = function range(end, value) {
             return numarray;
         }
     } else {
-        throw "End argument is not valid"
+        throw "End argument is not valid."
     }
-    //Question: Why does it not work when i do value !== null first?
+    //QUESTION: Why does it not work when I do value !== null first? range(4) would return [,,,]
 }
 
 //5. countElements(array)
@@ -115,7 +115,7 @@ countElements = function countElements(array) {
 
 
 //6. isEqual(arrayOne, arrayTwo)
-//need help with empty arrays and order
+//need help with order items in array
 isEqual = function isEqual(arrayOne, arrayTwo) {
     if (Array.isArray(arrayOne) && Array.isArray(arrayTwo)) {
         if (arrayOne !== undefined && arrayTwo !== undefined) {

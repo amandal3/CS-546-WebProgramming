@@ -2,7 +2,8 @@
 of your modules and create a passing and failing test case for each.
 */
 const arrayUtils = require("./arrayUtils");
-/*
+const stringUtils = require("./stringUtils");
+
 //----------------------------------------------------------------------------
 // Head Tests
 console.log('-----------------------------------------');
@@ -12,37 +13,37 @@ try {
     // Should Pass
     console.log('head passed successfully\tReturns: ' + arrayUtils.head([2, 3, 4]));
 } catch (e) {
-    console.error('head failed test case');
+    console.log(e);
 }
 try {
     // Should Fail
-    console.error('head did not error\tReturns: ' + arrayUtils.head(1234));
+    console.log('head did not error\tReturns: ' + arrayUtils.head(1234));
 } catch (e) {
-    console.log('head failed successfully');
+    console.log(e);
 }
 try {
     // Should Fail
-    console.error('head did not error\tReturns: ' + arrayUtils.head([]));
+    console.log('head did not error\tReturns: ' + arrayUtils.head([]));
 } catch (e) {
-    console.log('head failed successfully');
+    console.log(e);
 }
 try {
     // Should Fail
-    console.error('head did not error\tReturns: ' + arrayUtils.head("banana"));
+    console.log('head did not error\tReturns: ' + arrayUtils.head("banana"));
 } catch (e) {
-    console.log('head failed successfully');
+    console.log(e);
 }
 try {
     // Should Fail
-    console.error('head did not error\tReturns: ' + arrayUtils.head());
+    console.log('head did not error\tReturns: ' + arrayUtils.head());
 } catch (e) {
-    console.log('head failed successfully');
+    console.log(e);
 }
 try {
     // Should Pass
-    console.error('head passed successfully\tReturns: ' + arrayUtils.head([1, 2, 3]));
+    console.log('head passed successfully\tReturns: ' + arrayUtils.head([1, 2, 3]));
 } catch (e) {
-    console.log('head failed test case');
+    console.log(e);
 }
 console.log('-----------------------------------------\n');
 //----------------------------------------------------------------------------
@@ -55,37 +56,37 @@ try {
     // Should Pass
     console.log('last passed successfully\tReturns: ' + arrayUtils.last([2, 3, 4, 5]));
 } catch (e) {
-    console.error('last failed test case');
+    console.log(e);
 }
 try {
     // Should Fail
-    console.error('last did not error\tReturns: ', arrayUtils.last(1234));
+    console.log('last did not error\tReturns: ', arrayUtils.last(1234));
 } catch (e) {
-    console.log('last failed successfully');
+    console.log(e);
 }
 try {
     // Should Fail
-    console.error('last did not error\tReturns: ' + arrayUtils.last([]));
+    console.log('last did not error\tReturns: ' + arrayUtils.last([]));
 } catch (e) {
-    console.log('last failed successfully');
+    console.log(e);
 }
 try {
     //Should Fail
-    console.error('last did not error\tReturns: ' + arrayUtils.last("banana"));
+    console.log('last did not error\tReturns: ' + arrayUtils.last("banana"));
 } catch (e) {
-    console.log('last failed successfully');
+    console.log(e);
 }
 try {
     // Should Fail
-    console.error('last did not error\tReturns: ' + arrayUtils.last());
+    console.log('last did not error\tReturns: ' + arrayUtils.last());
 } catch (e) {
-    console.log('last failed successfully');
+    console.log(e);
 }
 try {
     // Should Pass
-    console.error('last passed successfully\tReturns: ' + arrayUtils.last([1, 2, 3]));
+    console.log('last passed successfully\tReturns: ' + arrayUtils.last([1, 2, 3]));
 } catch (e) {
-    console.log('last failed test case');
+    console.log(e);
 }
 console.log('-----------------------------------------\n');
 //----------------------------------------------------------------------------
@@ -98,43 +99,43 @@ try {
     // Should Pass
     console.log('remove passed successfully\tReturns: [' + arrayUtils.remove([5, 6, 7], 1) + ']');
 } catch (e) {
-    console.error('remove failed test case');
+    console.log(e);
 }
 try {
     // Should Fail
-    console.error('remove did not error\tReturns: [', arrayUtils.remove(1234) + ']');
+    console.log('remove did not error\tReturns: [', arrayUtils.remove(1234) + ']');
 } catch (e) {
-    console.log('remove failed successfully');
+    console.log(e);
 }
 try {
     // Should Fail
-    console.error('remove did not error\tReturns: [' + arrayUtils.remove([]) + ']');
+    console.log('remove did not error\tReturns: [' + arrayUtils.remove([]) + ']');
 } catch (e) {
-    console.log('remove failed successfully');
+    console.log(e);
 }
 try {
     //Should Fail
-    console.error('remove did not error\tReturns: [' + arrayUtils.remove("banana") + ']');
+    console.log('remove did not error\tReturns: [' + arrayUtils.remove("banana") + ']');
 } catch (e) {
-    console.log('remove failed successfully');
+    console.log(e);
 }
 try {
     // Should Fail
-    console.error('remove did not error\tReturns: [' + arrayUtils.remove() + ']');
+    console.log('remove did not error\tReturns: [' + arrayUtils.remove() + ']');
 } catch (e) {
-    console.log('remove failed successfully');
+    console.log(e);
 }
 try {
     // Should Pass
     console.log('remove passed successfully\tReturns: [' + arrayUtils.remove([1, 2, 3], 1) + ']');
 } catch (e) {
-    console.error('remove failed test case');
+    console.log(e);
 }
 try {
     // Should Fail
-    console.error('remove did not error\tReturns: [' + arrayUtils.remove([1, 2, 3], 3) + ']');
+    console.log('remove did not error\tReturns: [' + arrayUtils.remove([1, 2, 3], 3) + ']');
 } catch (e) {
-    console.log('remove failed successfully');
+    console.log(e);
 }
 console.log('-----------------------------------------\n');
 //----------------------------------------------------------------------------
@@ -147,24 +148,25 @@ try {
     // Should Pass
     console.log('range passed successfully\tReturns: [' + arrayUtils.range(4) + ']');
 } catch (e) {
-    console.error('range failed test case');
+    console.log(e);
 }
 try {
     //Should Fail
-    console.error('range did not error\tReturns: [' + arrayUtils.range("banana") + ']');
+    console.log('range did not error\tReturns: [' + arrayUtils.range("banana") + ']');
 } catch (e) {
-    console.log('range failed successfully');
+    console.log(e);
 }
 try {
     // Should Pass
     console.log('range passed successfully\tReturns: [' + arrayUtils.range(4, 'hi') + ']');
 } catch (e) {
-    console.error('range failed test case');
+    console.log(e);
 }
 console.log('-----------------------------------------\n');
 //----------------------------------------------------------------------------
 //----------------------------------------------------------------------------
 // Count Elements Tests
+/*
 console.log('-----------------------------------------');
 console.log('Here we will be doing countElements tests: \n');
 
@@ -188,7 +190,7 @@ try {
 }
 console.log('-----------------------------------------\n');
 //----------------------------------------------------------------------------
-//----------------------------------------------------------------------------*/
+//----------------------------------------------------------------------------
 // IsEqual Tests
 console.log('-----------------------------------------');
 console.log('Here we will be doing isEqual tests: \n');
@@ -197,61 +199,121 @@ try {
     // True
     console.log('isEqual results\tReturns: ' + arrayUtils.isEqual([1, 2, 3], [1, 2, 3]));
 } catch (e) {
-    console.error('isEqual failed test case');
+    console.log(e);
 }
 try {
     // False
     console.log('isEqual results\tReturns:', arrayUtils.isEqual([1, 2, 3], [4, 5, 6]));
 } catch (e) {
-    console.error('isEqual failed test case');
+    console.log(e);
 }
 try {
     // False
     console.log('isEqual results\tReturns:', arrayUtils.isEqual([1, 2, 3], [4, 5]));
 } catch (e) {
-    console.error('isEqual failed test case');
+    console.log(e);
 }
 try {
     // False
     console.log('isEqual results\tReturns:', arrayUtils.isEqual([1, 2, 3], [1, 2]));
 } catch (e) {
-    console.error('isEqual failed test case');
+    console.log(e);
 }
 try {
     // False
     console.log('isEqual results\tReturns:', arrayUtils.isEqual([1], []));
 } catch (e) {
-    console.error('isEqual failed test case');
+    console.log(e);
 }
 try {
     // Should Fail
     console.log('isEqual results\tReturns:', arrayUtils.isEqual());
 } catch (e) {
-    console.error('isEqual failed test case');
+    console.log(e);
 }
 try {
     // False
     console.log('isEqual results\tReturns:', arrayUtils.isEqual(['cookie'], [1]));
 } catch (e) {
-    console.error('isEqual failed test case');
+    console.log(e;
 }
 try {
     // False
     console.log('isEqual results\tReturns:', arrayUtils.isEqual(['cookie', 'usa'], [1, 'cookie']));
 } catch (e) {
-    console.error('isEqual failed test case');
+    console.log(e);
 }
 try {
     // False
     console.log('isEqual results\tReturns:', arrayUtils.isEqual([], []));
 } catch (e) {
-    console.error('isEqual failed test case');
+    console.log(e);
 }
 try {
     // False
     console.log('isEqual results\tReturns:', arrayUtils.isEqual([1, 2, 3], [1, 3, 2]));
 } catch (e) {
-    console.error('isEqual failed test case');
+    console.log(e);
+}
+console.log('-----------------------------------------\n');
+//----------------------------------------------------------------------------*/
+//----------------------------------------------------------------------------
+// Capitalize Test
+console.log('-----------------------------------------');
+console.log('Here we will capitalize the first letter and lowercase the remaining letters: \n');
+try {
+    // Returns: Foobar
+    console.log('Returns:', stringUtils.capitalize('foobar'));
+} catch (e) {
+    console.log(e);
+}
+try {
+    // Returns: Foobar
+    console.log('Returns:', stringUtils.capitalize('FOOBAR'));
+} catch (e) {
+    console.log(e);
+}
+try {
+    // Returns: Thanksgiving is my favorite holiday.
+    console.log('Returns:', stringUtils.capitalize('tHAnKSgIviNg is my FavoRite holIDAy.'));
+} catch (e) {
+    console.log(e);
+}
+try {
+    // Fails
+    console.log('Returns:', stringUtils.capitalize(4));
+} catch (e) {
+    console.log(e);
+}
+console.log('-----------------------------------------\n');
+//----------------------------------------------------------------------------
+//----------------------------------------------------------------------------
+// Repeat Test
+console.log('-----------------------------------------');
+console.log('Here we will repeat the string, num amount of times:\n');
+try {
+    // Returns: abcabcabc
+    console.log('Returns: "', stringUtils.repeat('abc', 3) + ' "');
+} catch (e) {
+    console.log(e);
+}
+try {
+    // Returns: abc
+    console.log('Returns: "', stringUtils.repeat('abc', 1) + ' "');
+} catch (e) {
+    console.log(e);
+}
+try {
+    // Returns: " "
+    console.log('Returns: "', stringUtils.repeat('abc', 0) + ' "');
+} catch (e) {
+    console.log(e);
+}
+try {
+    // Fails
+    console.log('Returns:', stringUtils.repeat());
+} catch (e) {
+    console.log(e);
 }
 console.log('-----------------------------------------\n');
 //----------------------------------------------------------------------------
