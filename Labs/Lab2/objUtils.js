@@ -1,11 +1,28 @@
 //This file will export methods that are useful when dealing with objects in JavaScript
 
 //1. extend(...args)
+extend = function extend(...args) {
+    var normArray = args;
+    if (normArray, length >= 2) {
+        if (typeof normArray === 'object') {
+            if (normArray[i] !== undefined) {
 
+            } else {
+                throw 'Undefined.'
+            }
+        } else {
+            throw 'Invalid type.'
+        }
+    } else {
+        throw 'Invalid arguments.';
+    }
+}
 
 
 //2. smush(args)
+smush = function smush(...args) {
 
+}
 
 
 //3. mapValues(object, func)
