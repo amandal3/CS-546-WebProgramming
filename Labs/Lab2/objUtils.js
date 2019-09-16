@@ -3,19 +3,26 @@
 //1. extend(...args)
 extend = function extend(...args) {
     //https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/rest_parameters
+    //Helped from TA David Kim
     let normArray = args;
     let result = new Object();
+
+    if (typeof args === 'undefined') {
+        throw 'provided variable is undefined.'
+    }
     if (normArray.length >= 2) {
         for (i = 0; i < normArray.length; i++) {
             if (typeof normArray[i] === 'object') {
-                for (var property in normArray) {
-                    result[i] = normArray[property];
+                for (var property in normArray[i]) {
+                    if (!(property in result)) {
+                        result[property] = normArray[i][property];
+                    }
                 }
             } else {
                 throw 'Invalid. Argument not an object.'
             }
-            return result[i];
         }
+        return result;
     } else {
         throw 'Invalid arguments.';
     }
@@ -24,9 +31,29 @@ extend = function extend(...args) {
 
 //2. smush(args)
 smush = function smush(...args) {
+    //https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/rest_parameters
+    //Helped from TA Mijeong Ban
+    let normArray = args;
+    let result = new Object();
 
+    if (typeof args === 'undefined') {
+        throw 'provided variable is undefined.'
+    }
+    if (normArray.length >= 2) {
+        for (i = 0; i < normArray.length; i++) {
+            if (typeof normArray[i] === 'object') {
+                for (var property in normArray[i]) {
+                    result[property] = normArray[i][property];
+                }
+            } else {
+                throw 'Invalid. Argument not an object.'
+            }
+        }
+        return result;
+    } else {
+        throw 'Invalid arguments.';
+    }
 }
-
 
 //3. mapValues(object, func)
 mapValues = function mapValues(object, func) {
@@ -45,6 +72,6 @@ mapValues = function mapValues(object, func) {
 
 module.exports = {
     extend,
-    //smush,
+    smush,
     mapValues
 };

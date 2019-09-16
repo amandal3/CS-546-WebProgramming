@@ -4,7 +4,7 @@ of your modules and create a passing and failing test case for each.
 const arrayUtils = require("./arrayUtils");
 const stringUtils = require("./stringUtils");
 const objUtils = require("./objUtils");
-/*
+
 //----------------------------------------------------------------------------
 // Head Tests
 console.log('-----------------------------------------');
@@ -275,9 +275,9 @@ try {
     console.log(e);
 }
 console.log('-----------------------------------------\n');
-//----------------------------------------------------------------------------*/
 //----------------------------------------------------------------------------
-/*// Capitalize Test
+//----------------------------------------------------------------------------
+// Capitalize Test
 console.log('-----------------------------------------');
 console.log('Here we will capitalize the first letter and lowercase the remaining letters: \n');
 try {
@@ -336,28 +336,28 @@ try {
 }
 console.log('-----------------------------------------\n');
 //----------------------------------------------------------------------------
-//----------------------------------------------------------------------------*/
+//----------------------------------------------------------------------------
 // countChars Test
-/*console.log('-----------------------------------------');
+console.log('-----------------------------------------');
 console.log('Here we return an object that has the mapping of the character and the numer of times it appears in a string:\n');
-try {*/
-/* Returns: {
-      " ": 6,
-      ",": 1,
-      "H": 1,
-      "e": 5,
-      "h": 2,
-      "i": 3,
-      "l": 2,
-      "n": 2,
-      "o": 2,
-      "p": 1,
-      "s": 1,
-      "t": 2,
-      "v": 1
-      }
-   */
-/*   console.log('Returns: ', stringUtils.countChars('Hello, the pie is in the oven'));
+try {
+    /* Returns: {
+          " ": 6,
+          ",": 1,
+          "H": 1,
+          "e": 5,
+          "h": 2,
+          "i": 3,
+          "l": 2,
+          "n": 2,
+          "o": 2,
+          "p": 1,
+          "s": 1,
+          "t": 2,
+          "v": 1
+          }
+       */
+    console.log('Returns: ', stringUtils.countChars('Hello, the pie is in the oven'));
 } catch (e) {
     console.log(e);
 }
@@ -383,8 +383,8 @@ try {
 }
 console.log('-----------------------------------------\n');
 //----------------------------------------------------------------------------
-//----------------------------------------------------------------------------*/
-/*// mapValues Test
+//----------------------------------------------------------------------------
+// mapValues Test
 console.log('-----------------------------------------');
 console.log('Here we will do some mapping:\n');
 try {
@@ -403,23 +403,57 @@ try { //Fail
     console.log(e);
 }
 console.log('-----------------------------------------\n');
-//----------------------------------------------------------------------------*/
+//----------------------------------------------------------------------------
+//----------------------------------------------------------------------------
+// SMUSH Test
+console.log('-----------------------------------------');
+console.log('Here we will do smush:\n');
 const first = { x: 2, y: 3 };
 const second = { a: 70, x: 4, z: 5 };
 const third = { x: 0, y: 9, q: 10 };
 
+try { // { x: 0, y: 9, a: 70, z: 5, q: 10 }
+    console.log('Returns: ', objUtils.smush(first, second, third));
+} catch (e) {
+    console.log(e);
+}
+try { // { a: 70, x: 0, z: 5, y: 9, q: 10 }
+    console.log('Returns: ', objUtils.smush(second, third));
+} catch (e) {
+    console.log(e);
+}
+try { // { x: 4, y: 3, q: 10, a: 70, z: 5 }
+    console.log('Returns: ', objUtils.smush(third, first, second));
+} catch (e) {
+    console.log(e);
+}
+try { // Invalid Args
+    console.log('Returns: ', objUtils.smush());
+} catch (e) {
+    console.log(e);
+}
+console.log('-----------------------------------------\n');
+//----------------------------------------------------------------------------
+//----------------------------------------------------------------------------
+// Extend Test
+console.log('-----------------------------------------');
+console.log('Here we will do extend:\n');
+const f = { x: 2, y: 3 };
+const s = { a: 70, x: 4, z: 5 };
+const t = { x: 0, y: 9, q: 10 };
+
 try { // { x: 2, y: 3, a: 70, z: 5, q: 10 }
-    console.log('Returns: ', objUtils.extend(first, second, third));
+    console.log('Returns: ', objUtils.extend(f, s, t));
 } catch (e) {
     console.log(e);
 }
 try { // { a: 70, x: 4, z: 5, y: 9, q: 10 } 
-    console.log('Returns: ', objUtils.extend(second, third));
+    console.log('Returns: ', objUtils.extend(s, t));
 } catch (e) {
     console.log(e);
 }
 try { // { x: 0, y: 9, q: 10, a: 70, z: 5 }
-    console.log('Returns: ', objUtils.extend(third, first, second));
+    console.log('Returns: ', objUtils.extend(t, f, s));
 } catch (e) {
     console.log(e);
 }
