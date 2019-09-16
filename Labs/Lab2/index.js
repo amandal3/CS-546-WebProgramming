@@ -172,35 +172,42 @@ console.log('Here we will be doing countElements tests: \n');
 
 try {
     // Should Pass
-    console.log('countElements passed successfully\tReturns: ' + JSON.stringify(arrayUtils.countElements([13, '13', 13, 'hello', true, true])));
+    console.log('countElements passed successfully\tReturns: ', arrayUtils.countElements([13, '13', 13, 'hello', true, true]));
 } catch (e) {
     console.log(e);
 }
 try {
     // Should Pass
-    console.log('countElements passed successfully\tReturns: ' + JSON.stringify(arrayUtils.countElements([13, 13, 3, 3, 3, 13, 3])));
+    console.log('countElements passed successfully\tReturns: ', arrayUtils.countElements([13, '13', 13, 'hello', true, true]));
+} catch (e) {
+    console.log(e);
+}
+try {
+    // Should Pass
+    console.log('countElements passed successfully\tReturns: ', arrayUtils.countElements([13, 13, 3, 3, 3, 13, 3]));
 } catch (e) {
     console.log(e);
 }
 try {
     //Should Fail
-    console.log('countElements did not error\tReturns: ' + JSON.stringify(arrayUtils.countElements("banana")));
+    console.log('countElements did not error\tReturns: ', arrayUtils.countElements("banana"));
 } catch (e) {
     console.log(e);
 }
 try {
     // Should Pass
-    console.log('countElements passed successfully\tReturns: ' + JSON.stringify(arrayUtils.countElements([])));
+    console.log('countElements passed successfully\tReturns: ', arrayUtils.countElements([]));
 } catch (e) {
     console.log(e);
 }
 try {
     // Should Pass
-    console.log('countElements passed successfully\tReturns: ' + JSON.stringify(arrayUtils.countElements()));
+    console.log('countElements passed successfully\tReturns: ', arrayUtils.countElements());
 } catch (e) {
     console.log(e);
 }
 console.log('-----------------------------------------\n');
+
 //----------------------------------------------------------------------------
 //----------------------------------------------------------------------------
 // IsEqual Tests
@@ -374,11 +381,11 @@ try {
 } catch (e) {
     console.log(e);
 }
-console.log('-----------------------------------------\n');*/
+console.log('-----------------------------------------\n');
 //----------------------------------------------------------------------------
-//----------------------------------------------------------------------------
-// mapValues Test
-/*console.log('-----------------------------------------');
+//----------------------------------------------------------------------------*/
+/*// mapValues Test
+console.log('-----------------------------------------');
 console.log('Here we will do some mapping:\n');
 try {
     console.log('Returns: ', objUtils.mapValues({ a: 1, b: 2, c: 3 }, n => n + 1));
@@ -397,3 +404,27 @@ try { //Fail
 }
 console.log('-----------------------------------------\n');
 //----------------------------------------------------------------------------*/
+const first = { x: 2, y: 3 };
+const second = { a: 70, x: 4, z: 5 };
+const third = { x: 0, y: 9, q: 10 };
+
+try { // { x: 2, y: 3, a: 70, z: 5, q: 10 }
+    console.log('Returns: ', objUtils.extend(first, second, third));
+} catch (e) {
+    console.log(e);
+}
+try { // { a: 70, x: 4, z: 5, y: 9, q: 10 } 
+    console.log('Returns: ', objUtils.extend(second, third));
+} catch (e) {
+    console.log(e);
+}
+try { // { x: 0, y: 9, q: 10, a: 70, z: 5 }
+    console.log('Returns: ', objUtils.extend(third, first, second));
+} catch (e) {
+    console.log(e);
+}
+try { // Invalid Args
+    console.log('Returns: ', objUtils.extend());
+} catch (e) {
+    console.log(e);
+}

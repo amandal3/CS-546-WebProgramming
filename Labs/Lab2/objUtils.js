@@ -2,16 +2,19 @@
 
 //1. extend(...args)
 extend = function extend(...args) {
-    var normArray = args;
-    if (normArray, length >= 2) {
-        if (typeof normArray === 'object') {
-            if (normArray[i] !== undefined) {
-
+    //https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/rest_parameters
+    let normArray = args;
+    let result = new Object();
+    if (normArray.length >= 2) {
+        for (i = 0; i < normArray.length; i++) {
+            if (typeof normArray[i] === 'object') {
+                for (var property in normArray) {
+                    result[i] = normArray[property];
+                }
             } else {
-                throw 'Undefined.'
+                throw 'Invalid. Argument not an object.'
             }
-        } else {
-            throw 'Invalid type.'
+            return result[i];
         }
     } else {
         throw 'Invalid arguments.';
@@ -41,7 +44,7 @@ mapValues = function mapValues(object, func) {
 
 
 module.exports = {
-    //extend,
+    extend,
     //smush,
     mapValues
 };
