@@ -8,6 +8,7 @@ Couldn't get above to work */
 
 //To check if arrays exist, I used Array.isArray()
 //Found information from: https://www.geeksforgeeks.org/javascript-array-isarray-function/
+//Other Array related information: https://www.w3schools.com/jsref/jsref_obj_array.asp 
 
 //1. head(array)
 head = function head(array) {
@@ -100,6 +101,7 @@ countElements = function countElements(array) {
             //let newArray = []; keeps returning null
             let newArray = new Object();
             for (i = 0; i < array.length; i++) {
+                //
                 let count = array[i];
                 if (newArray[count] > 0) {
                     newArray[count]++;
