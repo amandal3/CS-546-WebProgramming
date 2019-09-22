@@ -1,5 +1,5 @@
 const people = require("./people");
-//const weather = require("./weather");
+const weather = require("./weather");
 
 async function main() {
     console.log('               people.js')
@@ -76,45 +76,73 @@ async function main() {
     } catch (e) {
         console.log(e);
     }
-    /*console.log('               weather.js')
+    console.log('\n              weather.js')
     console.log('=========================================')
     console.log('Testing shouldTheyGoOutside Function:\n')
     try {
+        //Error
+        const goOutt = await weather.shouldTheyGoOutside("Robert", "Ly")
+        console.log(goOutt)
+    } catch (e) {
+        console.log(e);
+    }
+    try {
         //Returns: "Yes, Scotty should go outside."
-        const goOut = await people.shouldTheyGoOutside("Scotty", "Barajaz")
+        const goOut = await weather.shouldTheyGoOutside("Scotty", "Barajaz")
         console.log(goOut)
     } catch (e) {
         console.log(e);
     }
     try {
         //Returns: "No, Calli should not go outside."
-        const goOut1 = await people.shouldTheyGoOutside("Calli", "Ondrasek")
+        const goOut1 = await weather.shouldTheyGoOutside("Calli", "Ondrasek")
         console.log(goOut1)
     } catch (e) {
         console.log(e);
     }
     try {
         //Error
-        const goOut2 = await people.shouldTheyGoOutside()
+        const goOut2 = await weather.shouldTheyGoOutside()
         console.log(goOut2)
     } catch (e) {
         console.log(e);
     }
     try {
         //Error
-        const goOut3 = await people.shouldTheyGoOutside("Bob")
+        const goOut3 = await weather.shouldTheyGoOutside("Bob")
         console.log(goOut3)
     } catch (e) {
         console.log(e);
     }
     try {
         //Error
-        const goOut4 = await people.shouldTheyGoOutside("Bob", "Smith")
+        const goOut4 = await weather.shouldTheyGoOutside("Bob", "Smith")
         console.log(goOut4)
     } catch (e) {
         console.log(e);
     }
-    */
+    try {
+        //Error
+        const goOut4 = await weather.shouldTheyGoOutside("Calli", "Smith")
+        console.log(goOut4)
+    } catch (e) {
+        console.log(e);
+    }
+    try {
+        //Error
+        const goOut4 = await weather.shouldTheyGoOutside(123, "Smith")
+        console.log(goOut4)
+    } catch (e) {
+        console.log(e);
+    }
+    try {
+        //Error
+        const goOut4 = await weather.shouldTheyGoOutside(123, 123)
+        console.log(goOut4)
+    } catch (e) {
+        console.log(e);
+    }
+
 }
 
 
