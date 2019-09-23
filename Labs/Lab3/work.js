@@ -54,8 +54,35 @@ const whereDoTheyWork = async function whereDoTheyWork(firstName, lastName) {
 }
 
 const findTheHacker = async function findTheHacker(ip) {
+    let mList = await people.getPeople();
+    let hack = await getWork();
 
+    let yes = true;
+    if (typeof ip !== 'string') {
+        throw `${ip || "provided input"} is not a string`;
+    }
+    if (typeof ip === 'undefined') {
+        throw 'Undefined ip';
+    } else {
+        for (let i = 0; i < mList.length; i++) {
+            for (let j = 0; j < hack.length; j++) {
+                if (mList[i].ssn === hack[j].ssn) {
+                    if (hack[j].ip === ip) {
+                        return mList[i].firstName + ' ' + mList[i].lastName + ' is the hacker!'
+                    } else {
+                        yes = false;
+                    }
+                }
+            }
+        }
+    }
+    if (yes === false) {
+        throw 'Not Valid IP'
+    }
 }
+
+
+
 
 
 module.exports = {

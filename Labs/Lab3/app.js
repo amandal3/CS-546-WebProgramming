@@ -215,8 +215,50 @@ async function main() {
     } catch (e) {
         console.log(e);
     }
-
-
+    console.log('-----------------------------------------\n')
+    console.log('Testing findTheHacker Function:\n')
+    try {
+        //Returns: "Robert Herley is the hacker!"
+        const ip1 = await work.findTheHacker("79.222.167.180")
+        console.log(ip1)
+    } catch (e) {
+        console.log(e);
+    }
+    try {
+        //Error
+        const ip2 = await work.findTheHacker("foobar")
+        console.log(ip2)
+    } catch (e) {
+        console.log(e);
+    }
+    try {
+        //Error
+        const ip3 = await work.findTheHacker()
+        console.log(ip3)
+    } catch (e) {
+        console.log(e);
+    }
+    try {
+        //Error
+        const ip4 = await work.findTheHacker(123)
+        console.log(ip4)
+    } catch (e) {
+        console.log(e);
+    }
+    try {
+        //Returns: "Winfield Latey is the hacker!""
+        const ip5 = await work.findTheHacker("246.119.221.77")
+        console.log(ip5)
+    } catch (e) {
+        console.log(e);
+    }
+    try {
+        //Returns: "Alexia Stogill is the hacker!""
+        const ip6 = await work.findTheHacker("243.163.95.31")
+        console.log(ip6)
+    } catch (e) {
+        console.log(e);
+    }
 }
 
 
