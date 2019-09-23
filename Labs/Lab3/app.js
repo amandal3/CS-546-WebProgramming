@@ -1,5 +1,6 @@
 const people = require("./people");
 const weather = require("./weather");
+const work = require("./work");
 
 async function main() {
     console.log('               people.js')
@@ -60,6 +61,19 @@ async function main() {
         //Error
         const index3 = await people.lexIndex()
         console.log(index3)
+    } catch (e) {
+        console.log(e);
+    }
+    console.log('-----------------------------------------\n')
+    console.log('Testing firstNameMetrics Function:\n')
+    try {
+        // Returns: 
+        //   totalLetters: sum of all the letters in all the firstNames,
+        //   totalVowels: sum of all the vowels in all the firstNames,
+        //   totalConsonants: sum of all the consonants in all the firstNames,
+        //   longestName: the longest firstName in the list,
+        //   shortestName: the shortest firstName in the list
+        console.log(await people.firstNameMetrics())
     } catch (e) {
         console.log(e);
     }
@@ -142,6 +156,66 @@ async function main() {
     } catch (e) {
         console.log(e);
     }
+    console.log('\n              work.js')
+    console.log('=========================================')
+    console.log('Testing whereDoTheyWork Function:\n')
+    try {
+        //Returns: "Demetra Durrand - Nuclear Power Engineer at Buzzshare. They will be fired."
+        const work1 = await work.whereDoTheyWork("Demetra", "Durrand")
+        console.log(work1)
+    } catch (e) {
+        console.log(e);
+    }
+    try {
+        //Returns: "Hank Tarling - Technical Writer at Babbleblab. They will not be fired."
+        const work2 = await work.whereDoTheyWork("Hank", "Tarling")
+        console.log(work2)
+    } catch (e) {
+        console.log(e);
+    }
+    try {
+        //Error
+        const work4 = await work.whereDoTheyWork()
+        console.log(work4)
+    } catch (e) {
+        console.log(e);
+    }
+    try {
+        //Error
+        const work5 = await work.whereDoTheyWork("Bob")
+        console.log(work5)
+    } catch (e) {
+        console.log(e);
+    }
+    try {
+        //Error
+        const work6 = await work.whereDoTheyWork("Bob", "Smith")
+        console.log(work6)
+    } catch (e) {
+        console.log(e);
+    }
+    try {
+        //Error
+        const work7 = await work.whereDoTheyWork("Hank", "Smith")
+        console.log(work7)
+    } catch (e) {
+        console.log(e);
+    }
+    try {
+        //Error
+        const work8 = await work.whereDoTheyWork(123, "Smith")
+        console.log(work8)
+    } catch (e) {
+        console.log(e);
+    }
+    try {
+        //Error
+        const work9 = await work.whereDoTheyWork(123, 123)
+        console.log(work9)
+    } catch (e) {
+        console.log(e);
+    }
+
 
 }
 
