@@ -49,7 +49,7 @@ const shouldTheyGoOutside = async function shouldTheyGoOutside(firstName, lastNa
         }
     }
     if (first === false) {
-        throw 'Invalid firstName'
+        throw 'Invalid firstName. Did not check lastName.'
     }
 }
 
