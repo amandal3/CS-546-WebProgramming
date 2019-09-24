@@ -18,7 +18,7 @@ capitalize = function capititalize(string) {
 repeat = function repeat(string, num) {
     checkInput(string);
     //return string.repeat(times); used to compare with below
-    if (typeof num === 'number') {
+    if (typeof num === 'number' && num >= 0) {
         let str = "";
         while (num > 0) {
             str = str + string

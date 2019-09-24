@@ -330,6 +330,12 @@ try {
     console.log(e);
 }
 try {
+    // Returns: " "
+    console.log('Returns: "', stringUtils.repeat('abc', -2) + ' "');
+} catch (e) {
+    console.log(e);
+}
+try {
     // Fails
     console.log('Returns:', stringUtils.repeat());
 } catch (e) {
