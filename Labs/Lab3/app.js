@@ -77,19 +77,6 @@ async function main() {
     } catch (e) {
         console.log(e);
     }
-    console.log('-----------------------------------------\n')
-    console.log('Testing firstNameMetrics Function:\n')
-    try {
-        // Returns: 
-        //   totalLetters: sum of all the letters in all the firstNames,
-        //   totalVowels: sum of all the vowels in all the firstNames,
-        //   totalConsonants: sum of all the consonants in all the firstNames,
-        //   longestName: the longest firstName in the list,
-        //   shortestName: the shortest firstName in the list
-        console.log(await people.firstNameMetrics())
-    } catch (e) {
-        console.log(e);
-    }
     console.log('\n              weather.js')
     console.log('=========================================')
     console.log('Testing shouldTheyGoOutside Function:\n')
