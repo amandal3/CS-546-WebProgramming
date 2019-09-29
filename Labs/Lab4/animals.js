@@ -4,7 +4,7 @@ const ObjectId = require('mongodb').ObjectID;
 
 //from lecture 4: addDog
 const create = async function create(name, animalType) {
-    if (!name || name !== 'string') throw 'You must provide a valid name for your animal';
+    if (!name) throw 'You must provide a valid name for your animal';
     if (typeof name !== 'string') throw `${name || 'first variable'} is not a string`;
     if (!animalType) throw 'You must provide an valid animalType';
     if (typeof animalType !== 'string') throw `${animalType || 'second variable'} is not a string`;
@@ -20,26 +20,25 @@ const create = async function create(name, animalType) {
     if (insertInfo.insertedCount === 0) throw 'Could not add animal';
 
     const newId = insertInfo.insertedId;
-    const farm = await this.get(newId);
-    return farm;
+    return newAnimal;
 }
 
 //from lecture 4: getAllDogs
 const getAll = async function getAll() {
     const animalCollection = await animals();
-    const animals = await animalCollection.find({}).toArray();
+    const query = await animalCollection.find({}).toArray();
 
-    return animals;
+    return query;
 }
 
 //from lecture 4: getDogById
 const get = async function get(id) {
     if (!id) throw 'You must provide an id to search for';
-    if (typeof id !== 'string') throw `${id || 'variable entered'} is not a string`;
+    //https: //docs.mongodb.com/manual/reference/method/ObjectId.toString/
+    if (typeof ObjectId(id).toString() !== 'string') throw `${id || 'variable entered'} is not a string`;
 
-    const objectConv = ObjectID(id);
     const animalCollection = await animals();
-    const farmAnimal = await animalCollection.findOne({ _id: objectConv });
+    const farmAnimal = await animalCollection.findOne({ _id: ObjectId(id) });
 
     if (farmAnimal === null) throw 'No animal with that id';
 
@@ -49,11 +48,10 @@ const get = async function get(id) {
 //from lecture 4: removeDog
 const remove = async function remove(id) {
     if (!id) throw 'You must provide an id to search for';
-    if (typeof id !== 'string') throw `${id || 'variable entered'} is not a string`;
+    if (typeof ObjectId(id).toString() !== 'string') throw `${id || 'variable entered'} is not a string`;
 
-    const objectConv = ObjectID(id);
     const animalCollection = await animals();
-    const deletionInfo = await animalCollection.removeOne({ _id: objectConv });
+    const deletionInfo = await animalCollection.removeOne({ _id: ObjectId(id) });
 
     if (deletionInfo.deletedCount === 0) {
         throw `Could not delete animal with id of ${id}`;
@@ -63,17 +61,16 @@ const remove = async function remove(id) {
 //from lecture 4: updateDog
 const rename = async function rename(id, newName) {
     if (!id) throw 'You must provide an id to search for';
-    if (typeof id !== 'string') throw `${id || 'first variable'} is not a string`;
+    //https: //docs.mongodb.com/manual/reference/method/ObjectId.toString/
+    if (typeof ObjectId(id).toString() !== 'string') throw `${id || 'first variable'} is not a string`;
     if (!newName) throw 'You must provide a valid newName for your animal';
     if (typeof newName !== 'string') throw `${newName || 'second variable'} is not a string`;
 
-    const objectConv = ObjectID(id);
     const animalCollection = await animals();
     const updatedAnimal = {
         name: newName,
-        animalType: data.animalType
     };
-    const updatedInfo = await animalCollection.updateOne({ _id: objectConv }, { $set: updatedAnimal });
+    const updatedInfo = await animalCollection.updateOne({ _id: ObjectId(id) }, { $set: updatedAnimal });
     if (updatedInfo.modifiedCount === 0) {
         throw 'could not update dog successfully';
     }

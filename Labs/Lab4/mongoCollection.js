@@ -1,5 +1,5 @@
 //Lecture 4 code 
-const dbConnection = require("./mongoConnection");
+const dbConnection = require("./mongoConnections");
 
 /* This will allow you to have one reference to each collection per app */
 const getCollectionFn = collection => {
