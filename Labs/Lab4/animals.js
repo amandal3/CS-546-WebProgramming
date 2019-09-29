@@ -35,7 +35,9 @@ const getAll = async function getAll() {
 const get = async function get(id) {
     if (!id) throw 'You must provide an id to search for';
     //https: //docs.mongodb.com/manual/reference/method/ObjectId.toString/
-    if (typeof ObjectId(id).toString() !== 'string') throw `${id || 'variable entered'} is not a string`;
+    //if (typeof ObjectId(id).toString() !== 'string') throw `${id || 'variable entered'} is not a string`;
+    //Above makes no sense bc since we're converting to string, it will never throw
+    if (typeof id !== 'string') throw `${id || 'variable entered'} is not a string`;
 
     const animalCollection = await animals();
     const farmAnimal = await animalCollection.findOne({ _id: ObjectId(id) });
@@ -48,7 +50,7 @@ const get = async function get(id) {
 //from lecture 4: removeDog
 const remove = async function remove(id) {
     if (!id) throw 'You must provide an id to search for';
-    if (typeof ObjectId(id).toString() !== 'string') throw `${id || 'variable entered'} is not a string`;
+    if (typeof id !== 'string') throw `${id || 'variable entered'} is not a string`;
 
     const animalCollection = await animals();
     const deletionInfo = await animalCollection.removeOne({ _id: ObjectId(id) });
@@ -62,7 +64,9 @@ const remove = async function remove(id) {
 const rename = async function rename(id, newName) {
     if (!id) throw 'You must provide an id to search for';
     //https: //docs.mongodb.com/manual/reference/method/ObjectId.toString/
-    if (typeof ObjectId(id).toString() !== 'string') throw `${id || 'first variable'} is not a string`;
+    //if (typeof ObjectId(id).toString() !== 'string') throw `${id || 'variable entered'} is not a string`;
+    //Above makes no sense bc since we're converting to string, it will never throw
+    if (typeof id !== 'string') throw `${id || 'first variable'} is not a string`;
     if (!newName) throw 'You must provide a valid newName for your animal';
     if (typeof newName !== 'string') throw `${newName || 'second variable'} is not a string`;
 

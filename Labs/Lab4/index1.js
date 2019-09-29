@@ -35,7 +35,7 @@ const main = async() => {
 
     // Rename Sasha to Sashita
     console.log('Lets rename Sasha...');
-    const Sashita = await animals.rename(Sasha._id, 'Sashita');
+    const Sashita = await animals.rename(String(Sasha._id), 'Sashita');
     console.log('rename done');
 
     // Log the newly named Sashita
@@ -44,7 +44,7 @@ const main = async() => {
 
     // Remove Lucy
     console.log('Someone found a new home...');
-    const removeLucy = await animals.remove(Lucy._id);
+    const removeLucy = await animals.remove(String(Lucy._id));
     console.log('Bye bye Lucy');
 
     // Query all animals, and log them all
