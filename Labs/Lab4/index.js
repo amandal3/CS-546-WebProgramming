@@ -1,4 +1,4 @@
-const animals = require('./animals');
+const animals = require('./data/animals');
 const connection = require('./mongoConnections');
 const collection = require('./mongoCollection');
 const database = collection.animals;
@@ -51,7 +51,7 @@ async function main() {
     try {
         // Rename Sasha to Sashita
         console.log('Lets rename Sasha...');
-        const Sashita = await animals.rename(Sasha._id, 'Sashita');
+        const Sashita = await animals.rename(String(Sasha._id), 'Sashita');
         console.log('rename done');
 
         // Log the newly named Sashita
@@ -63,7 +63,7 @@ async function main() {
     try {
         // Remove Lucy
         console.log('Someone found a new home...');
-        const removeLucy = await animals.remove(Lucy._id);
+        const removeLucy = await animals.remove(String(Lucy._id));
         console.log('Bye bye Lucy\n');
 
     } catch (e) {

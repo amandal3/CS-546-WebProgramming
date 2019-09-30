@@ -1,7 +1,7 @@
 //testing purposes
 const mongoColl = require("./mongoCollection");
 const mongoConn = require("./mongoConnections");
-const pokemon = require("./animals.js")
+const pokemon = require("./data/animals.js")
 const pokeDB = mongoColl.pokemon;
 
 

@@ -1,4 +1,4 @@
-const mongoCollection = require('./mongoCollection');
+const mongoCollection = require('./../mongoCollection');
 const animals = mongoCollection.animals;
 const ObjectId = require('mongodb').ObjectID;
 
