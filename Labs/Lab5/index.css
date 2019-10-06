@@ -10,16 +10,37 @@ h2 {
     text-align: center;
 }
 
-ul {
+#ulspce {
     list-style: circle;
     padding-left: 820px;
 }
 
-ol {
+#olspce {
     padding-left: 820px
 }
 
 li {
     text-align: left;
     list-style-position: inside;
+}
+
+a:link {
+    color: blue;
+}
+
+a:visited {
+    color: purple;
+}
+
+a:hover {
+    color: red;
+}
+
+#navPan {
+    text-align: right;
+}
+
+#navPan li {
+    list-style-type: none;
+    text-align: right;
 }
