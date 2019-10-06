@@ -1,0 +1,19 @@
+h1 {
+    /*https://www.w3schools.com/css/css_syntax.asp*/
+    text-align: center;
+    color: rgb(17, 80, 14);
+    font-size: 36px;
+}
+
+#pcenter {
+    text-align: center;
+}
+
+img.resize {
+    width: 5%;
+}
+
+#rcntr {
+    text-align: center;
+    color: red;
+}
