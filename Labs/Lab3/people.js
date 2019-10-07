@@ -84,7 +84,13 @@ const firstNameMetrics = async function firstNameMetrics() {
     //used to debug count to make sure it was working;
     //let count = '\nLongest name: ' + countL + "\nShortest name: " + countS;
     //return countL;
-    let ans = 'Total Letters: ' + totalLetters + '\nTotal Vowels: ' + totalVowels + "\nTotal Consonants: " + totalConsonants + '\nLongest name: ' + longestName + "\nShortest name: " + shortestName;
+    let ans = {
+        TotalLetters: totalLetters,
+        TotalVowels: totalVowels,
+        TotalConsonants: totalConsonants,
+        LongestName: longestName,
+        ShortestName: ShortestName
+    }
     return ans;
 }
 
