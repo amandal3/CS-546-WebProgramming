@@ -1,0 +1,12 @@
+{
+    "name": "lab6",
+    "version": "1.0.0",
+    "description": "Lab6 Module",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "start": "node app.js"
+    },
+    "author": "Amanda Ly 10416895",
+    "license": "ISC"
+}
