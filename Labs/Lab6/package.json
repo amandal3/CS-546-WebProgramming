@@ -8,5 +8,8 @@
         "start": "node app.js"
     },
     "author": "Amanda Ly 10416895",
-    "license": "ISC"
+    "license": "ISC",
+    "dependencies": {
+        "express": "^4.17.1"
+    }
 }
