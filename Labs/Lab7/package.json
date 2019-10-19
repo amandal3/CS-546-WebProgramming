@@ -1,0 +1,15 @@
+{
+    "name": "lab7",
+    "version": "1.0.0",
+    "description": "Lab7 Module",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "start": "node index.js"
+    },
+    "author": "Amanda Ly 10416895",
+    "license": "ISC",
+    "dependencies": {
+        "express": "^4.17.1"
+    }
+}
