@@ -13,7 +13,9 @@ const create = async function create(name, animalType) {
     const animalCollection = await animals();
     let newAnimal = {
         name: name,
-        animalType: animalType
+        animalType: animalType,
+        likes: [],
+        posts: []
     };
 
     const insertInfo = await animalCollection.insertOne(newAnimal);
@@ -77,7 +79,28 @@ const rename = async function rename(id, newName) {
     };
     const updatedInfo = await animalCollection.updateOne({ _id: ObjectId(id) }, { $set: updatedAnimal });
     if (updatedInfo.modifiedCount === 0) {
-        throw 'could not update dog successfully';
+        throw 'could not update animal successfully';
+    }
+
+    return await this.get(id);
+}
+
+const updateNameAndType = async function updateNameAndType(id, newName, animalType) {
+    if (!id) throw 'You must provide an id to search for';
+    if (typeof id !== 'string') throw `${id || 'first variable'} is not a string`;
+    if (!newName) throw 'You must provide a valid newName for your animal';
+    if (typeof newName !== 'string') throw `${newName || 'second variable'} is not a string`;
+    if (!animalType) throw 'You must provide a valid newName for your animal';
+    if (typeof animalType !== 'string') throw `${animalType || 'second variable'} is not a string`;
+
+    const animalCollection = await animals();
+    const updatedAnimal = {
+        newName: newName,
+        newType: animalType,
+    };
+    const updatedInfo = await animalCollection.updateOne({ _id: ObjectId(id) }, { $set: updatedAnimal });
+    if (updatedInfo.modifiedCount === 0) {
+        throw 'could not update animal successfully';
     }
 
     return await this.get(id);
@@ -88,5 +111,6 @@ module.exports = {
     getAll,
     get,
     remove,
-    rename
+    rename,
+    updateNameAndType
 };
