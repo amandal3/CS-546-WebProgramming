@@ -1,5 +1,5 @@
-const mongoCollections = require('./mongoCollections');
-const posts = mongoCollections.posts;
+const mongoCollection = require('./mongoCollection');
+const posts = mongoCollection.posts;
 const animals = require('./animals');
 const ObjectId = require('mongodb').ObjectID;
 

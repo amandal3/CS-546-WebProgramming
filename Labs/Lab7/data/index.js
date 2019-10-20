@@ -1,4 +1,4 @@
-const animalData = require("./animas");
+const animalData = require("./animals");
 const postData = require("./posts");
 
 module.exports = {
