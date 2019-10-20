@@ -55,6 +55,7 @@ const remove = async function remove(id) {
     if (typeof id !== 'string') throw `${id || 'variable entered'} is not a string`;
 
     const animalCollection = await animals();
+    //needed to return info before deleted (aka info to be deleted) - helped from B.Balaj
     const ToBeDeleted = await animalCollection.findOne({ _id: ObjectId(id) });
     const deletionInfo = await animalCollection.removeOne({ _id: ObjectId(id) });
 

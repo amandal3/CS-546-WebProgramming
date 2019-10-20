@@ -2,10 +2,11 @@ const express = require('express');
 const router = express.Router();
 const data = require('../data');
 const postData = data.posts;
+const ObjectId = require('mongodb').ObjectID;
 
 router.get('/', async(req, res) => {
     try {
-        const postList = await postData.get();
+        const postList = await postData.readAll();
         res.json(postList);
     } catch (e) {
         res.status(500).json({ error: e });
@@ -14,22 +15,24 @@ router.get('/', async(req, res) => {
 
 router.post('/', async(req, res) => {
     const blogPostData = req.body;
+    console.log(blogPostData);
     try {
-        const { title, content, authorID } = blogPostData;
-        const newPost = await postData.create(title, content, authorID);
+        const { title, content, author } = blogPostData;
+        console.log("router");
+        const newPost = await postData.create(title, content, author);
+        console.log(newPost);
 
         res.json(newPost);
-        res.sendStatus(200);
     } catch (e) {
+        console.log(e);
         res.status(400).json({ error: e });
     }
 });
 
 router.get('/:id', async(req, res) => {
     try {
-        const post = await postData.get(req.params.id);
+        const post = await postData.read(req.params.id);
         res.json(post);
-        res.sendStatus(200);
     } catch (e) {
         res.status(404).json({ error: 'Post not found' });
     }
@@ -37,29 +40,25 @@ router.get('/:id', async(req, res) => {
 
 router.put('/:id', async(req, res) => {
     const updatedData = req.body;
-    if (!updatedDate) {
+    console.log(updatedData);
+    if (!updatedData) {
         res.status(400).json({ error: 'You must provide data to update post' });
         return;
     }
-
-    if (!updatedDate.title) {
-        res.status(400).json({ error: 'You must provide a title' });
-        return;
-    }
-
-    if (!aniMal.content) {
-        res.status(400).json({ error: 'You must provide content' });
+    if (!updatedData.newTitle && !updatedData.newContent) {
+        res.status(400).json({ error: 'You must provide a title or content' });
         return;
     }
 
     try {
-        await postData.get(req.params.id);
+        const retrieve = await postData.read(req.params.id);
+        console.log(retrieve);
     } catch (e) {
         res.status(404).json({ error: 'Post not found' });
     }
 
     try {
-        const updatedPost = await postData.update(req.params.id, updatedData);
+        const updatedPost = await postData.update(req.params.id, updatedData.newTitle, updatedData.newContent);
         res.json(updatedPost);
     } catch (e) {
         res.status(500).json({ error: e });
@@ -68,14 +67,15 @@ router.put('/:id', async(req, res) => {
 
 router.delete('/:id', async(req, res) => {
     try {
-        await postData.get(req.params.id);
+        await postData.read(req.params.id);
     } catch (e) {
         res.status(404).json({ error: 'Post not found' });
     }
     try {
-        await postData.remove(req.params.id);
-        res.json({ deleted: 'ok' });
+        const deletedP = await postData.delete(req.params.id);
+        res.json({ deleted: 'true', data: deletedP });
     } catch (e) {
+        console.log(e);
         res.status(500).json({ error: e });
     }
 });

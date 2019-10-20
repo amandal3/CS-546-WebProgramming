@@ -95,7 +95,7 @@ router.delete('/:id', async(req, res) => {
 
     try {
         const deletedA = await animalsData.remove(req.params.id);
-        res.json(deletedA);
+        res.json({ deleted: 'true', data: deletedA });
     } catch (e) {
         console.log(e);
         res.sendStatus(500);
