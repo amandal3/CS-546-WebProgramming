@@ -75,10 +75,11 @@ router.put('/:id', async(req, res) => {
     }
 
     try {
-        const updatedA = await animalsData.updateNameAndType(req.params.id, aniMal);
+        const updatedA = await animalsData.updateNameAndType(req.params.id, aniMal.newName, aniMal.newType);
         console.log(updatedA);
         res.json(updatedA);
     } catch (e) {
+        console.log(e)
         res.sendStatus(500);
     }
 });
@@ -93,7 +94,8 @@ router.delete('/:id', async(req, res) => {
     }
 
     try {
-        await animalsData.remove(req.params.id);
+        const deletedA = await animalsData.remove(req.params.id);
+        res.json(deletedA);
     } catch (e) {
         console.log(e);
         res.sendStatus(500);

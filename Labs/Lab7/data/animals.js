@@ -55,12 +55,13 @@ const remove = async function remove(id) {
     if (typeof id !== 'string') throw `${id || 'variable entered'} is not a string`;
 
     const animalCollection = await animals();
+    const ToBeDeleted = await animalCollection.findOne({ _id: ObjectId(id) });
     const deletionInfo = await animalCollection.removeOne({ _id: ObjectId(id) });
 
     if (deletionInfo.deletedCount === 0) {
         throw `Could not delete animal with id of ${id}`;
     }
-    return delectionInfo;
+    return ToBeDeleted;
 }
 
 //from lecture 4: updateDog
@@ -88,24 +89,30 @@ const rename = async function rename(id, newName) {
 const updateNameAndType = async function updateNameAndType(id, newName, newType) {
     if (!id) throw 'You must provide an id to search for';
     if (typeof id !== 'string') throw `${id || 'first variable'} is not a string`;
-    if (!newName || !newType) throw 'You must provide a valid newName or newType for your animal';
+    if (!newName && !newType) throw 'You must provide a valid newName or newType for your animal';
     // if (!newType) throw 'You must provide a valid newName for your animal';
     const animalCollection = await animals();
 
     if (newName !== undefined) {
+        console.log("reach newName");
+        console.log(newName);
         if (typeof newName !== 'string') throw `${newName || 'second variable'} is not a string`;
-        // const updatedName = {
-        //     name: newName
-        // };
-        const updatedInfo = await animalCollection.updateOne({ _id: ObjectId(id) }, { $set: { name: newName } });
+        console.log("reach #2 for newName");
+        const updatedName = {
+            name: newName
+        };
+        var updatedInfo = await animalCollection.updateOne({ _id: ObjectId(id) }, { $set: updatedName });
     }
 
     if (newType !== undefined) {
+        console.log("reach newType");
+        console.log(newType);
         if (typeof newType !== 'string') throw `${newType || 'second variable'} is not a string`;
-        // const updatedType = {
-        //     animalType: newType
-        // };
-        const updatedInfo = await animalCollection.updateOne({ _id: ObjectId(id) }, { $set: { animalType: newType } });
+        console.log("reach #2 for newType");
+        const updatedType = {
+            animalType: newType
+        };
+        var updatedInfo = await animalCollection.updateOne({ _id: ObjectId(id) }, { $set: updatedType });
     }
 
     if (updatedInfo.modifiedCount === 0) {
