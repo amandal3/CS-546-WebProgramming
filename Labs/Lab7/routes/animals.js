@@ -5,8 +5,9 @@ const animalsData = data.animals;
 
 router.get('/', async(req, res) => {
     console.log('in get request');
+
     try {
-        const anemal = await userData.getAll();
+        const anemal = await animalsData.getAll();
         res.json(anemal);
     } catch (e) {
         res.sendStatus(500);
@@ -14,6 +15,7 @@ router.get('/', async(req, res) => {
 });
 
 router.get('/:id', async(req, res) => {
+    console.log('in get id request');
     try {
         const anymal = await animalsData.get(req.params.id);
         res.json(anymal);
@@ -23,6 +25,7 @@ router.get('/:id', async(req, res) => {
 });
 
 router.post('/', async(req, res) => {
+    console.log('in post request');
     const AnimalInfo = req.body;
 
     if (!AnimalInfo) {
@@ -41,7 +44,7 @@ router.post('/', async(req, res) => {
     }
 
     try {
-        const newAnimal = await animalsData.addUser(userInfo.name, userInfo.animalType);
+        const newAnimal = await animalsData.create(AnimalInfo.name, AnimalInfo.animalType);
         res.json(newAnimal);
     } catch (e) {
         res.sendStatus(500);
@@ -49,33 +52,31 @@ router.post('/', async(req, res) => {
 });
 
 router.put('/:id', async(req, res) => {
+    console.log('in put id request');
     const aniMal = req.body;
+    console.log(req.body);
 
     if (!aniMal) {
         res.status(400).json({ error: 'You must provide data to update an animal' });
         return;
     }
 
-    if (!aniMal.name) {
-        res.status(400).json({ error: 'You must provide a name' });
-        return;
-    }
-
-    if (!aniMal.animalType) {
-        res.status(400).json({ error: 'You must provide a type' });
+    if (!aniMal.newName && !aniMal.newType) {
+        res.status(400).json({ error: 'You must provide a name or a type' });
         return;
     }
 
     try {
-        await animalsData.get(req.params.id);
-        res.sendStatus(200);
+        const retrieve = await animalsData.get(req.params.id);
+        console.log(retrieve);
     } catch (e) {
         res.status(404).json({ error: 'Animal not found' });
         return;
     }
 
     try {
-        const updatedA = await animalsData.rename(req.params.id, aniMal);
+        const updatedA = await animalsData.updateNameAndType(req.params.id, aniMal);
+        console.log(updatedA);
         res.json(updatedA);
     } catch (e) {
         res.sendStatus(500);
@@ -83,6 +84,7 @@ router.put('/:id', async(req, res) => {
 });
 
 router.delete('/:id', async(req, res) => {
+    console.log('in delete id request');
     try {
         await animalsData.get(req.params.id);
     } catch (e) {
@@ -92,8 +94,8 @@ router.delete('/:id', async(req, res) => {
 
     try {
         await animalsData.remove(req.params.id);
-        res.sendStatus(200);
     } catch (e) {
+        console.log(e);
         res.sendStatus(500);
         return;
     }

@@ -85,20 +85,29 @@ const rename = async function rename(id, newName) {
     return await this.get(id);
 }
 
-const updateNameAndType = async function updateNameAndType(id, newName, animalType) {
+const updateNameAndType = async function updateNameAndType(id, newName, newType) {
     if (!id) throw 'You must provide an id to search for';
     if (typeof id !== 'string') throw `${id || 'first variable'} is not a string`;
-    if (!newName) throw 'You must provide a valid newName for your animal';
-    if (typeof newName !== 'string') throw `${newName || 'second variable'} is not a string`;
-    if (!animalType) throw 'You must provide a valid newName for your animal';
-    if (typeof animalType !== 'string') throw `${animalType || 'second variable'} is not a string`;
-
+    if (!newName || !newType) throw 'You must provide a valid newName or newType for your animal';
+    // if (!newType) throw 'You must provide a valid newName for your animal';
     const animalCollection = await animals();
-    const updatedAnimal = {
-        newName: newName,
-        newType: animalType,
-    };
-    const updatedInfo = await animalCollection.updateOne({ _id: ObjectId(id) }, { $set: updatedAnimal });
+
+    if (newName !== undefined) {
+        if (typeof newName !== 'string') throw `${newName || 'second variable'} is not a string`;
+        // const updatedName = {
+        //     name: newName
+        // };
+        const updatedInfo = await animalCollection.updateOne({ _id: ObjectId(id) }, { $set: { name: newName } });
+    }
+
+    if (newType !== undefined) {
+        if (typeof newType !== 'string') throw `${newType || 'second variable'} is not a string`;
+        // const updatedType = {
+        //     animalType: newType
+        // };
+        const updatedInfo = await animalCollection.updateOne({ _id: ObjectId(id) }, { $set: { animalType: newType } });
+    }
+
     if (updatedInfo.modifiedCount === 0) {
         throw 'could not update animal successfully';
     }
