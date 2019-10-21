@@ -104,10 +104,13 @@ const updateNameAndType = async function updateNameAndType(id, newName, newType)
         const updatedName = {
             name: newName
         };
+
+        //updates if change made in author name - Helped by B.Balaj (lines 109-112) @Gateway@1:00
         const f = await animalCollection.findOne({ _id: ObjectId(id) });
         const oldN = f.name;
         const pC = await pst();
         pC.updateMany({ 'author.name': oldN }, { $set: { 'author.name': newName } });
+
         var updatedInfo = await animalCollection.updateOne({ _id: ObjectId(id) }, { $set: updatedName });
     }
 

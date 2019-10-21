@@ -91,6 +91,7 @@ const exportedMethods = {
         if (!newTitle && !newContent) throw 'You must provide a valid newTitle or newContent for your post';
         const postCollection = await posts();
         const srch = await postCollection.findOne({ _id: ObjectId(id) });
+        if (srch === null) throw 'cannnnnnnooot be null. dungoofed'
         if (newTitle !== undefined) {
             console.log("reach Title");
             console.log(newTitle);
@@ -126,12 +127,19 @@ const exportedMethods = {
         console.log('REACHED');
         const aCollec = await mals();
         console.log(aID);
+
         const search = await aCollec.findOne({ _id: ObjectId(aID) });
         console.log(search);
-        let i = 0;
+        if (search === null) throw 'cannnnnnnooot be null. dungoofed'
         console.log(oldT);
         console.log(newT);
-        //Helped from B.Balaj
+        //https://stackoverflow.com/questions/41316056/mongodb-update-array-element-document-with-a-key-if-exists-else-push
+        //Doesnt work... plz returns null/undefined
+        //const plz = await aCollect.updateOne({"search.posts": ObjectId(aID)}, {$set: {$search.posts.$.title: newT}});
+        //console.log(plz);
+
+        //Helped from B.Balaj 10/21/2019 @Gateway@2:00
+        let i = 0;
         for (i; i < search.posts.length; i++) {
             console.log(search.posts[i].title);
             if (search.posts[i].title === oldT) {
