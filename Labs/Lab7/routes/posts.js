@@ -61,6 +61,7 @@ router.put('/:id', async(req, res) => {
         const updatedPost = await postData.update(req.params.id, updatedData.newTitle, updatedData.newContent);
         res.json(updatedPost);
     } catch (e) {
+        console.log(e);
         res.status(500).json({ error: e });
     }
 });

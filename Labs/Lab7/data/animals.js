@@ -1,5 +1,6 @@
 const mongoCollection = require('./mongoCollection');
 const animals = mongoCollection.animals;
+const pst = mongoCollection.posts;
 const ObjectId = require('mongodb').ObjectID;
 
 //from lecture 4: addDog
@@ -10,6 +11,7 @@ const create = async function create(name, animalType) {
     if (typeof animalType !== 'string') throw `${animalType || 'second variable'} is not a string`;
     if (animalType.length === 0) throw 'You must provide at least one type of animal.';
 
+    const pstCollect = await pst();
     const animalCollection = await animals();
     let newAnimal = {
         name: name,
@@ -102,6 +104,10 @@ const updateNameAndType = async function updateNameAndType(id, newName, newType)
         const updatedName = {
             name: newName
         };
+        const f = await animalCollection.findOne({ _id: ObjectId(id) });
+        const oldN = f.name;
+        const pC = await pst();
+        pC.updateMany({ 'author.name': oldN }, { $set: { 'author.name': newName } });
         var updatedInfo = await animalCollection.updateOne({ _id: ObjectId(id) }, { $set: updatedName });
     }
 
