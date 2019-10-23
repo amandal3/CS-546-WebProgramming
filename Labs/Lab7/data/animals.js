@@ -57,7 +57,7 @@ const remove = async function remove(id) {
     if (typeof id !== 'string') throw `${id || 'variable entered'} is not a string`;
 
     const animalCollection = await animals();
-    //needed to return info before deleted (aka info to be deleted) - helped from B.Balaj
+
     const ToBeDeleted = await animalCollection.findOne({ _id: ObjectId(id) });
     const deletionInfo = await animalCollection.removeOne({ _id: ObjectId(id) });
 
@@ -65,6 +65,22 @@ const remove = async function remove(id) {
         throw `Could not delete animal with id of ${id}`;
     }
     return ToBeDeleted;
+}
+
+//if animal is remove, all the posts need to go poof too
+const removeP = async function removeP(animalID, postID) {
+    if (!animalID) throw 'You must provide an id to remove';
+    if (typeof animalID !== 'string') throw `${animalID || 'variable entered'} is not a string`;
+    if (!postID) throw 'No postID provided';
+    if (typeof postID !== 'string') throw `${postID || 'variable entered'} is not a string`;
+
+    const animalCollection = await animals();
+    //https://docs.mongodb.com/manual/reference/operator/update/pull/
+    //https://docs.mongodb.com/manual/reference/operator/update/pullAll/
+    //removes all matching array entry;
+    return animalCollection.update({ _id: animalID }, { $pull: { posts: { id: postID } } }).then(function() {
+        return this.get(id);
+    });
 }
 
 //from lecture 4: updateDog
@@ -138,5 +154,6 @@ module.exports = {
     get,
     remove,
     rename,
-    updateNameAndType
+    updateNameAndType,
+    removeP
 };
