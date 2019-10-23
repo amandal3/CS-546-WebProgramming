@@ -59,6 +59,7 @@ const remove = async function remove(id) {
     const animalCollection = await animals();
 
     const ToBeDeleted = await animalCollection.findOne({ _id: ObjectId(id) });
+    //const waitplz = await this.removeP(id, ToBeDeleted.author._id);
     const deletionInfo = await animalCollection.removeOne({ _id: ObjectId(id) });
 
     if (deletionInfo.deletedCount === 0) {
@@ -78,9 +79,8 @@ const removeP = async function removeP(animalID, postID) {
     //https://docs.mongodb.com/manual/reference/operator/update/pull/
     //https://docs.mongodb.com/manual/reference/operator/update/pullAll/
     //removes all matching array entry;
-    return animalCollection.update({ _id: animalID }, { $pull: { posts: { id: postID } } }).then(function() {
-        return this.get(id);
-    });
+    const wait = await animalCollection.updateOne({ _id: animalID }, { $pull: { posts: { id: postID } } });
+    return this.get(id);
 }
 
 //from lecture 4: updateDog
