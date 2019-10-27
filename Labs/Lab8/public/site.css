@@ -1,0 +1,30 @@
+h1 {
+    /*https://www.w3schools.com/css/css_syntax.asp*/
+    text-align: center;
+    color: rgb(16, 16, 81);
+    font-size: 36px;
+    font-style: italic;
+}
+
+title {
+    font-style: italic;
+}
+
+h2 {
+    color: darkslategray;
+    text-align: center;
+}
+
+p {
+    font-family: Georgia, Cambria, "Times New Roman", Times, serif;
+}
+
+li {
+    text-align: left;
+    list-style-position: inside;
+    color: purple;
+}
+
+dl {
+    color: blue;
+}
