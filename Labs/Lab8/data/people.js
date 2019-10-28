@@ -33,6 +33,7 @@ function checkInput(inputVal, string) {
 
 const collectNames = async function collectNames(name) {
     let alpha = await getPeople();
+    console.log(name);
     if (!name) throw 'Provide a name'
     if (typeof name === 'undefined') {
         throw 'Undefined name';
@@ -40,6 +41,7 @@ const collectNames = async function collectNames(name) {
     if (name == '') {
         throw 'Cannot be an empty string';
     }
+
     checkInput(name);
     //convert all to one case:
     var lower = name.toLowerCase();
@@ -50,15 +52,17 @@ const collectNames = async function collectNames(name) {
     //contains - returns true or false
     //includes - returns true or false
     //RegExp.text - returns true or false
-    for (let i = 0; i < alpha.length; i++) {
-        var convert = alpha[i].length.ToLowerCase();
-        return convert;
-    }
+
+    // for (let i = 0; i < alpha.length; i++) {
+    //   var convert = alpha[i].length.toLowerCase();
+    // return convert;
+    //}
+
     var query = []
     var match = 0;
-    for (let j = 0; j < convert.length; j++) {
-        if (convert[j].length.firstName.includes(lower) || convert[j].length.lastName.includes(lower)) {
-            query = query.push(convert[j]);
+    for (let j = 0; j < alpha.length; j++) {
+        if (alpha[j].firstName.toLowerCase().includes(lower) || alpha[j].lastName.toLowerCase().includes(lower)) {
+            query.push(alpha[j]);
             match = match + 1;
         }
         if (match == 20) {
@@ -68,8 +72,6 @@ const collectNames = async function collectNames(name) {
     return query;
 
 }
-
-
 
 module.exports = {
     getPeople,

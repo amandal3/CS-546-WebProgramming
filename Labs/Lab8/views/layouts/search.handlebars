@@ -1,3 +1,5 @@
+<!DOCTYPE html>
+<html lang= 'en'>
 <head>
     <meta charset="utf-8">
     <title>Person Found</title>
@@ -9,18 +11,20 @@
         <h2>{{personName}}</h2>
     <main>
          <ul>
-             {{#each info}}
+             {{#each personName}}
             <li>
                 <a href="/details/{{this.id}}">{{this.firstName}} {{this.lastName}}</a>
             </li>
+            {{else}}
                 <p class='error' >
                     Error: Please try again with a valid input. There is no results with your current search input.
                 </p>
-                <p class = 'not found'>
+                {{!-- <p class = 'not found'>
                     We're sorry, but no results were found for {personName}.
-                </p>
+                </p> --}}
             {{/each}}
         </ul>
     </main>
     <a href="/">Make another search...</a>
 </body>
+</html>

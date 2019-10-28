@@ -14,17 +14,29 @@ router.get('/', async(req, res) => {
 
 router.post('/', async(req, res) => {
     try {
-        const info = await peopleData.collectNames(req.params.personName);
-        if (!personName) {
-            res.status(400).json({ error: 'Missing Name' });
-        }
-        if (personName == '') {
-            res.status(400).json({ error: 'Invalid Name' });
+        console.log("router place");
+        console.log(req.body.personName);
+        const info = await peopleData.collectNames(req.body.personName);
+        console.log("HELLO WORLD");
+        //console.log(info);
+        if (!req.body.personName) {
+            //res.status(400).json({ error: 'Missing Name' });
+            res.status(400).render('layouts/search');
             return;
         }
-        res.render('information/search', { personName: info });
+        console.log('Oink');
+        if (req.body.personName == '') {
+            //res.status(400).json({ error: 'Invalid Name' });
+            res.status(400).render('layouts/search');
+            return;
+        }
+        console.log('Moo')
+        res.render('layouts/search', { personName: info });
+        console.log('Quack')
     } catch (e) {
-        res.sendstatus(400).json({ error: e });
+        console.log('Yoink');
+        console.log(e);
+        res.status(400).json({ error: e });
     }
 });
 
