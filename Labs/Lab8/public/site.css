@@ -28,3 +28,8 @@ li {
 dl {
     color: blue;
 }
+
+.button_style {
+    background-color: blue;
+    color: white;
+}
