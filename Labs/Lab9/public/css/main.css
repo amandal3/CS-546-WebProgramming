@@ -1,0 +1,33 @@
+body {
+    background: #fefefe;
+    font-family: Georgia, Cambria, "Times New Roman", Times, serif;
+    font-size: 15pt;
+}
+
+main {
+    max-width: 75%;
+    margin: auto;
+}
+
+header {
+    border-bottom: 1px solid #afafaf;
+}
+
+h1 {
+    color: green;
+    margin-bottom: 5px;
+}
+
+p {
+    font-size: 1rem;
+    line-height: 2;
+}
+
+.main-style {
+    color: peru;
+}
+
+footer {
+    font-size: 10pt;
+    color: pink;
+}
