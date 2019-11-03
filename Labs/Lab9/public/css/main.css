@@ -14,7 +14,7 @@ header {
 }
 
 h1 {
-    color: green;
+    color: purple;
     margin-bottom: 5px;
 }
 
@@ -30,4 +30,18 @@ p {
 footer {
     font-size: 10pt;
     color: pink;
+}
+
+button {
+    color: white;
+    background: lightslategray;
+    border: darkslategrey;
+}
+
+.is-prime {
+    color: green;
+}
+
+.not-prime {
+    color: red;
 }
