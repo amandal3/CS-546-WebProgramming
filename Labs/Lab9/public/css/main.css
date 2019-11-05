@@ -1,7 +1,7 @@
 body {
     background: #fefefe;
     font-family: Georgia, Cambria, "Times New Roman", Times, serif;
-    font-size: 15pt;
+    font-size: 13pt;
 }
 
 main {
@@ -18,31 +18,28 @@ h1 {
     margin-bottom: 5px;
 }
 
-p {
+.p_style {
     font-size: 1rem;
-    line-height: 2;
-}
-
-.main-style {
-    color: peru;
+    line-height: 0.5;
 }
 
 footer {
-    font-size: 10pt;
     color: pink;
+    margin: 80px;
 }
 
 .button_style {
-    background-color: #4CAF50;
+    background-color: rgb(12, 73, 12);
     border: none;
     color: white;
-    padding: 15px 15px;
+    padding: 12px 12px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 18px;
+    font-size: 16px;
     margin: 4px 4px;
     cursor: pointer;
+    box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
 }
 
 .is-prime {
