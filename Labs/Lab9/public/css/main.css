@@ -29,7 +29,7 @@ footer {
 }
 
 .button_style {
-    background-color: rgb(12, 73, 12);
+    background-color: rgb(51, 128, 37);
     border: none;
     color: white;
     padding: 12px 12px;
@@ -43,9 +43,9 @@ footer {
 }
 
 .is-prime {
-    color: green;
+    color: #00E676;
 }
 
 .not-prime {
-    color: red;
+    color: #FF3D00;
 }
