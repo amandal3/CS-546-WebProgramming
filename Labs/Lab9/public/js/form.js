@@ -22,43 +22,45 @@
     console.log('RAWR');
     if (staticForm) {
         attempts = document.getElementById("attempts");
-    }
-    console.log(staticForm);//null?
-    staticForm.addEventListener("Submit", event => {
-        event.preventDefault();
 
-        try {
-            // hide containers by default
-            errorContainer.classList.add("hidden");
-            resultContainer.classList.add("hidden");
+        console.log(staticForm);
 
-            // Values come from inputs as strings, no matter what
-            const inputNumber = inputNumber.value;
-            const parsedNumberValue = parseInt(inputNumber);
+        staticForm.addEventListener("Submit", event => {
+            event.preventDefault();
 
-            const result = isPrime(parsedNumberValue);
-            console.log('RESULT is :', result);
+            try {
+                // hide containers by default
+                errorContainer.classList.add("hidden");
+                resultContainer.classList.add("hidden");
 
-            for (let j = 0; j < result.length; j++) {
-                if (result[j].includes('NOT')) {
-                    // document.createElement('li').classList.add('not-prime');
-                    var isFalse = document.createElement('li');
-                    var temp = isFalse.classList.add('not-prime');
-                    attempts.appendChild(temp);
-                } else {
-                    // document.createElement('li').classList.add('is-prime');
-                    var isTrue = document.createElement('li')
-                    var temp = isTrue.classList.add('is-prime');
-                    attempts.appendChild(temp);
+                // Values come from inputs as strings, no matter what
+                const inputNumber = inputNumber.value;
+                const parsedNumberValue = parseInt(inputNumber);
+
+                const result = isPrime(parsedNumberValue);
+                console.log('RESULT is :', result);
+
+                for (let j = 0; j < result.length; j++) {
+                    if (result[j].includes('NOT')) {
+                        // document.createElement('li').classList.add('not-prime');
+                        var isFalse = document.createElement('li');
+                        var temp = isFalse.classList.add('not-prime');
+                        attempts.appendChild(temp);
+                    } else {
+                        // document.createElement('li').classList.add('is-prime');
+                        var isTrue = document.createElement('li')
+                        var temp = isTrue.classList.add('is-prime');
+                        attempts.appendChild(temp);
+                    }
                 }
-            }
 
-            resultTextElement.textContent = "The result is " + result;
-            resultContainer.classList.remove("hidden");
-        } catch (e) {
-            const message = typeof e === "string" ? e : e.message;
-            errorTextElement.textContent = e;
-            errorContainer.classList.remove("hidden");
-        }
-    });
+                resultTextElement.textContent = "The result is " + result;
+                resultContainer.classList.remove("hidden");
+            } catch (e) {
+                const message = typeof e === "string" ? e : e.message;
+                errorTextElement.textContent = e;
+                errorContainer.classList.remove("hidden");
+            }
+        });
+    }
 })();
