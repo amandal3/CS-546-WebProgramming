@@ -14,7 +14,7 @@
                 Welcome to Web Development Lab 9! For this lab, we will provide a server that only exists to allow someone to get to the HTML Page and download the associated assets to run the prime number checking page.
             </p>
             {{!-- https://github.com/graffixnyc/CS546/blob/master/lecture_09/JqueryExample/index.html --}}
-            <form method="POST" id ="static-form">
+            {{!-- <form method="POST" id ="static-form">
                 <label for="input">
                     Input a number:
                     <input id="input" name="number" placeholder="Input Number" type="number"/>
@@ -22,9 +22,12 @@
                 <button class = 'button_style' type="Submit">Submit</button>
                 {{{body}}}
             </form>
-            <ol id="attempts">
-
-            </ol>
+            <ol id="attempts"></ol> --}}
+            <div class="row">
+            <div class="col-sm-6">
+                {{{body}}}
+            </div>
+        </div>
     </main>
     <script src='/public/js/form.js'></script>
 

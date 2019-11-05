@@ -12,7 +12,8 @@ router.get("/server", (req, res) => {
 });
 
 router.post("/server", (req, res) => {
-    let inputNumber = parseInt(req.body.number1);
+    let inputNumber = parseInt(req.body.input);
+    console.log(inputNumber);
     let result;
 
     try {
