@@ -1,7 +1,7 @@
 (function() {
     const calculatorMethods = {
         isPrime(number) {
-            // my CS501 isPrime homework 
+            // my CS501 isPrime homework
             if (!number) throw 'Must provide a number'
             if (typeof number !== 'number') throw 'Must provide a number'
             if (number == 1 || number == 0) {
@@ -19,11 +19,11 @@
     };
 
     const staticForm = document.getElementById("static-form");
-
+    console.log('RAWR');
     if (staticForm) {
         attempts = document.getElementById("attempts");
     }
-
+    console.log(staticForm);//null?
     staticForm.addEventListener("Submit", event => {
         event.preventDefault();
 
