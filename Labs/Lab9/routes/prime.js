@@ -4,6 +4,7 @@ const data = require("../data");
 const prime = data.prime;
 
 router.get("/static", (req, res) => {
+    console.log('RAWR1');
     res.render("prime/static", {});
 });
 
