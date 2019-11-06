@@ -4,29 +4,28 @@ const data = require("../data");
 const prime = data.prime;
 
 router.get("/static", (req, res) => {
-    console.log('RAWR1');
     res.render("prime/static", {});
 });
 
-router.get("/server", (req, res) => {
-    res.render("prime/server", {});
-});
+// router.get("/server", (req, res) => {
+//     res.render("prime/server", {});
+// });
 
-router.post("/server", (req, res) => {
-    let inputNumber = parseInt(req.body.input);
-    console.log(inputNumber);
-    let result;
+// router.post("/server", (req, res) => {
+//     let inputNumber = parseInt(req.body.input);
+//     console.log(inputNumber);
+//     let result;
 
-    try {
-        result = prime.isPrime(inputNumber);
-    } catch (e) {
-        res.render("prime/server", {
-            inputNumber: inputNumber,
-            result: result,
-            error: e
-        });
-        return;
-    }
-});
+//     try {
+//         result = prime.isPrime(inputNumber);
+//     } catch (e) {
+//         res.render("prime/server", {
+//             inputNumber: inputNumber,
+//             result: result,
+//             error: e
+//         });
+//         return;
+//     }
+// });
 
 module.exports = router;
