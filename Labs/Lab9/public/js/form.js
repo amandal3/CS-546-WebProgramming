@@ -33,10 +33,10 @@
         var errorTextElement = errorContainer.getElementsByClassName(
             "text-goes-here"
         )[0];
-        var resultContainer = document.getElementById("result-container");
-        var resultTextElement = resultContainer.getElementsByClassName(
-            "text-goes-here"
-        )[0];
+        // var resultContainer = document.getElementById("result-container");
+        // var resultTextElement = resultContainer.getElementsByClassName(
+        //     "text-goes-here"
+        // )[0];
         console.log("done here")
 
         console.log(numba);
