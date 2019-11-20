@@ -8,11 +8,12 @@ const constructorMethod = app => {
     app.use("/login", logoutRoutes);
 
     app.get("/", (req, res) => {
-        res.render('/private');
+        res.render('layouts/private');
     });
 
     app.use("*", (req, res) => {
-        res.render('/login');
+        res.status(404).json({ error: "404 Not found" });
+        // res.render('/login');
     });
 };
 

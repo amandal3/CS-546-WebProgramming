@@ -4,6 +4,7 @@ const exphbs = require('express-handlebars');
 const configRoutes = require('./routes');
 const static = express.static(__dirname + '/public');
 const bycrpytjs = require('bycrypt');
+const session = require('express-session')
 const app = express();
 
 app.use('/public', static);
@@ -14,18 +15,23 @@ app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
 app.set('view engine', 'handlebars');
 
 //https://expressjs.com/en/guide/writing-middleware.html
-app.get('/', function(req, res, next) {
-    if (res) {
+// app.get('/', function(req, res, next) {
+//     if (res.session.user) {
+//         next();
+//     } else {
+//         response.status(403).send("User is not logged in.");
+//     }
+// })
+
+const authenicationChcker = (req, res, next) => {
+    if (req.session.user) {
         next();
     } else {
-        response.status(403).send("User is not logged in.");
+        res.status(403);
+        res.render("error", { error: "authentication failed" })
+        return;
     }
-})
-
-app.use((req, res, next) => {
-    console.log((new Date().toUTCString()), req.method, req.originalUrl);
-    next();
-})
+}
 
 app.use(session({
     name: 'AuthCookie',
@@ -33,6 +39,11 @@ app.use(session({
     resave: false,
     saveUninitialized: true
 }))
+
+app.use((req, res, next) => {
+    console.log((new Date().toUTCString()), req.method, req.originalUrl);
+    next();
+})
 
 configRoutes(app);
 

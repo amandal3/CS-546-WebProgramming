@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const data = require('../data');
 const usersData = data.users;
+const session = require("express-session");
 
 router.get('/logout', async(req, res) => {
     //How to get router to expire/delete session.
