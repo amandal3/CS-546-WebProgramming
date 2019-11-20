@@ -8,7 +8,7 @@ const constructorMethod = app => {
     app.use("/login", logoutRoutes);
 
     app.get("/", (req, res) => {
-        res.render('layouts/private');
+        res.render('layouts/main');
     });
 
     app.use("*", (req, res) => {

@@ -23,7 +23,7 @@ router.post('/login', async(req, res) => {
             }
         }
     }
-    res.render("layouts/login", { error: "Error. Try Again." });
+    res.render("layouts/main", { error: "Error. Try Again." });
 });
 
 module.exports = router;

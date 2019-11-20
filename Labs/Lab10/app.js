@@ -45,6 +45,16 @@ app.use((req, res, next) => {
     next();
 })
 
+app.get("/", (req, res) => {
+    if (req.session.user) {
+        // if user exits, go to private
+        res.redirect("/private");
+    } else {
+        // else send to main
+        res.render("layouts/main");
+    }
+});
+
 configRoutes(app);
 
 // We can now navigate to localhost:3000
