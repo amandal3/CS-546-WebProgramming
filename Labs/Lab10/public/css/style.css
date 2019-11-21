@@ -14,6 +14,11 @@ main {
     line-height: 0.5;
 }
 
+footer {
+    color: pink;
+    margin: 80px;
+}
+
 .button_style {
     background-color: rgb(51, 128, 37);
     border: none;
