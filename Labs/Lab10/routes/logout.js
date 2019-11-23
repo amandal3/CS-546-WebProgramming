@@ -9,7 +9,7 @@ router.get('/logout', async(req, res) => {
     //https://codeforgeek.com/manage-session-using-node-js-express-4/ 
     res.session.destroy();
     res.clearCookie("AuthCookie");
-    res.render("layouts/logout");
+    res.render("structure/logout");
     return;
 });
 

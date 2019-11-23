@@ -19,7 +19,8 @@ in below code so the route wasnt protected with authentication middleware.
 all users were able to see this page */
 
 router.get('/private', authenicationChcker, async(req, res) => {
-    res.render("layouts/private", req.session.user);
+    //fricken path problems every time - debugged by B.Balaj
+    res.render("structure/private", req.session.user);
     return;
 });
 
