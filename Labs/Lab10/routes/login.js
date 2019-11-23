@@ -28,7 +28,7 @@ router.post('/', async(req, res) => {
             }
         }
     }
-    res.render("login", { error: "Error. Try Again." });
+    res.render("page", { error: "Error. Try Again." });
 });
 
 module.exports = router;
