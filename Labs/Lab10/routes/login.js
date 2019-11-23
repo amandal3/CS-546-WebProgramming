@@ -17,7 +17,7 @@ router.post('/', async(req, res) => {
             // another oopsy const hashP = await bcrypt.compare(password, usersData[x].hashedPassword);
             const hashP = await bcrypt.compare(pass, usersData[i].hashedPassword);
             if (hashP == true) {
-                req.session.user = usersData[i]; //missed a spot here dumbo
+                req.session.user = usersData[i];
                 res.redirect("/private");
                 return;
 
