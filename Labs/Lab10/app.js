@@ -69,5 +69,5 @@ app.use("*", (req, res) => {
 //Addind top for testing reasons
 // We can now navigate to localhost:3000
 app.listen(3000, function() {
-    console.log('Your server is now listening on port 3000! \n Navigate to http://localhost:3000 to access it');
+    console.log('Your server is now listening on port 3000! \nYour routes will be running on http://localhost:3000');
 });
