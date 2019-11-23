@@ -23,7 +23,7 @@ app.set('view engine', 'handlebars');
 //         response.status(403).send("User is not logged in.");
 //     }
 // })
-/* Debugged by B.Balaj 
+/*
 const authenicationChcker = (req, res, next) => {
     if (req.session.user) {
         console.log('Rawr1');
@@ -42,33 +42,34 @@ app.use((req, res, next) => {
 })
 
 app.use(session({
-        name: 'AuthCookie',
-        secret: 'some secret string!',
-        resave: false,
-        saveUninitialized: true
-    }))
-    /*
-    app.use((req, res, next) => {
-        console.log((new Date().toUTCString()), req.method, req.originalUrl);
-        next();
-    })*/
-    /* 
-    app.get("/", (req, res) => {
-        if (req.session.user) {
-            // if user exits, go to private
-            res.redirect("/private");
-        } else {
-            // else send to main
-            res.render("layouts/main");
-        }
-    });
-    */
+    name: 'AuthCookie',
+    secret: 'some secret string!',
+    resave: false,
+    saveUninitialized: true
+}))
+/*
+app.use((req, res, next) => {
+    console.log((new Date().toUTCString()), req.method, req.originalUrl);
+    next();
+})*/
+/* //not sure why we checking here
+app.get("/", (req, res) => {
+    if (req.session.user) {
+        // if user exits, go to private
+        res.redirect("/private");
+    } else {
+        // else send to main
+        res.render("layouts/main");
+    }
+});
+*/
 configRoutes(app);
 
-app.use("*", (req, res) => {
-    res.sendStatus(404);
+app.use("*",(req,res) => {
+  console.log('Rawr15')//not actual #15 just that 15 stands out
+	res.sendStatus(404);
 });
-
+//Addind top for testing reasons
 // We can now navigate to localhost:3000
 app.listen(3000, function() {
     console.log('Your server is now listening on port 3000! Navigate to http://localhost:3000 to access it');
