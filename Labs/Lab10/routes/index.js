@@ -1,20 +1,19 @@
-const privateRoutes = require("./private");
-const logoutRoutes = require("./logout");
-const loginRoutes = require("./login");
+const logoutRoute = require("./logout");
+const loginRoute = require("./login");
+const privRoute = require("./private");
+const path = require("path");
 
 const constructorMethod = app => {
-    app.use("/private", privateRoutes);
-    app.use("/logout", loginRoutes);
-    app.use("/login", logoutRoutes);
+	app.use("/logout", logoutRoute);
+	app.use("/login", loginRoute);
+  app.use("/private", privRoute);
+  app.get("/", (req, res) => {
+    res.render('form');
+  })
 
-    app.get("/", (req, res) => {
-        res.render('layouts/main');
-    });
-
-    app.use("*", (req, res) => {
-        res.status(404).json({ error: "404 Not found" });
-        // res.render('/login');
-    });
+	app.use("*", (req, res) => {
+		res.status(404).json({ error: "Not found -- Rawr Test1"});
+	});
 };
 
 module.exports = constructorMethod;
