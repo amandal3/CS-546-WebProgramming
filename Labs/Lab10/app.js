@@ -3,7 +3,7 @@ const usersData = require('./data/users');
 const exphbs = require('express-handlebars');
 const configRoutes = require('./routes');
 const static = express.static(__dirname + '/public');
-const bycrpytjs = require('bycrypt');
+const bcrpytjs = require('bcrypt');
 const session = require('express-session')
 const app = express();
 
