@@ -6,19 +6,22 @@
     <h1> Lab 10: Login</h1>
 
     <main>
-        {{#if error}}
-        <p>{{error}}</p>
-        {{/if}}
-
         <form method = "POST" id="login-form" action="login">
-        <label>Login:</label><br>
+        {{!-- <label>Login:</label><br> --}}
         {{!-- https://www.w3schools.com/tags/att_input_required.asp --}}
         <label for="username"><b>Username</b></label>
         <input type="text" name="username" id="username" placeholder="Username" required>
+        <br><br>
         <label for="password"><b>Password</b></label>
         <input type="password" name="password" id="password" placeholder="Password" required>
+        <br><br>
+        <button type="submit" class="button_style" >LOGIN</button>
+        <br>
 
-        <button type="submit" class="button" >LOGIN</button>
+        {{#if error}}
+        <p class='p_error'>{{error}}</p>
+        {{/if}}
+
         </form>
     </main>
 </body>

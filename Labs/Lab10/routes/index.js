@@ -12,7 +12,7 @@ const constructorMethod = app => {
     })
 
     app.use("*", (req, res) => {
-        res.status(404).json({ error: "Not found -- Rawr Test1" });
+        res.status(404).json({ error: "Not found -- Error Msg from Index.js" });
     });
 };
 

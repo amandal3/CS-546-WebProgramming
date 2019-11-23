@@ -10,9 +10,10 @@ router.post('/', async(req, res) => {
 
     const username = req.body.username;
     const pass = req.body.password;
-    console.log('BOYS WE MADE IT')
-    console.log(username)
-    console.log('RawrDood')
+
+    console.log(username);
+    console.log(pass);
+
     for (var i = 0; i < usersData.length; i++) { //lol we had an oopsy here
         console.log(usersData[i].username) //used x in here when we using i
         if (username === usersData[i].username) {
@@ -21,7 +22,6 @@ router.post('/', async(req, res) => {
             if (hashP == true) {
                 req.session.user = usersData[i]; //missed a spot here dumbo
                 res.redirect("/private");
-                console.log('Rawr3')
                 return;
 
                 // Same Soft. Eng friend said this was not needed here since second error serves same functionality.
@@ -31,7 +31,6 @@ router.post('/', async(req, res) => {
             }
         }
     }
-    console.log('MonkaSMan');
     res.render("form", { error: "Error. Try Again." });
 });
 
