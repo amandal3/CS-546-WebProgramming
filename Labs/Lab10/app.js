@@ -61,6 +61,15 @@ app.use(session({
         }
     });
     */
+
+// from logout.handlebar (idk why req.session works here)
+app.get("/logout", (req, res) => {
+    req.session.destroy();
+    res.clearCookie("AuthCookie");
+    res.render("logout");
+    return;
+});
+
 configRoutes(app);
 
 app.use("*", (req, res) => {

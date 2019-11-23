@@ -14,8 +14,9 @@ router.post('/', async(req, res) => {
     console.log(username);
     console.log(pass);
 
-    for (var i = 0; i < usersData.length; i++) { //lol we had an oopsy here
-        console.log(usersData[i].username) //used x in here when we using i
+    // Random i to x variable mess up - B.Balaj
+    for (var i = 0; i < usersData.length; i++) {
+        console.log(usersData[i].username)
         if (username === usersData[i].username) {
             // another oopsy const hashP = await bcrypt.compare(password, usersData[x].hashedPassword);
             const hashP = await bcrypt.compare(pass, usersData[i].hashedPassword);
@@ -32,6 +33,8 @@ router.post('/', async(req, res) => {
         }
     }
     res.render("form", { error: "Error. Try Again." });
+    // res.status(401).json({ error: "Error 401: You did not provide a valid username and/or password." });
+
 });
 
 module.exports = router;
