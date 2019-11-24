@@ -15,6 +15,7 @@ router.get('/', async(req, res) => {
     console.log(req.session);
     res.clearCookie("AuthCookie");
     res.render("logout");
+    // res.session = null;
     // res.render("form");
     return;
     // req.session.destroy(() => {
