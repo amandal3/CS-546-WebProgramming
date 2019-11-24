@@ -12,12 +12,13 @@ router.post('/', async(req, res) => {
     const pass = req.body.password;
 
     console.log(username);
+    const upperusername = username.toUpperCase();
     console.log(pass);
 
     // Random i to x variable mess up - B.Balaj
     for (var i = 0; i < usersData.length; i++) {
         console.log(usersData[i].username)
-        if (username === usersData[i].username) {
+        if (upperusername === usersData[i].username.toUpperCase()) {
             // another oopsy const hashP = await bcrypt.compare(password, usersData[x].hashedPassword);
             const hashP = await bcrypt.compare(pass, usersData[i].hashedPassword);
             if (hashP == true) {
