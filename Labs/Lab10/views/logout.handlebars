@@ -1,5 +1,11 @@
 <head>
     <title>Logout</title>
+    {{!-- https://stackoverflow.com/questions/19926641/how-to-disable-back-button-in-browser-using-javascript --}}
+    <script>
+      function preventBack(){window.history.forward();}
+      setTimeout("preventBack()", 0);
+      window.onunload=function(){null};
+    </script>
 </head>
 
 <body>
